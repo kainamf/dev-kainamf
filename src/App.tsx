@@ -7,7 +7,7 @@ function App() {
   const [currentTech, setCurrentTech] = useState(0);
   const [particles, setParticles] = useState<Array<{id: number, x: number, y: number, delay: number}>>([]);
 
-  const technologies = ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Node.js', 'MongoDB'];
+  const technologies = ['Tailwind CSS', 'React', 'Next.js', 'TypeScript', 'Node.js'];
   
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {

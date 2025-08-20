@@ -1,4 +1,16 @@
 <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="64" height="64" rx="16" fill="#7CDA3D"/>
-  <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" font-family="monospace" font-size="32" fill="#030303" font-weight="bold" dy="2">&lt;/&gt;</text>
+  <defs>
+    <linearGradient id="logo-gradient" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7CDA3D" />
+      <stop offset="1" stop-color="#7CDA3D" stop-opacity="0.8" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="24" fill="url(#logo-gradient)"/>
+  <g>
+    <svg x="8" y="8" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#030303" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m18 16 4-4-4-4"></path>
+      <path d="m6 8-4 4 4 4"></path>
+      <path d="m14.5 4-5 16"></path>
+    </svg>
+  </g>
 </svg>

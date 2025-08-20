@@ -15,9 +15,9 @@ interface ServicesSectionProps {
 }
 
 const ServicesSection: React.FC<ServicesSectionProps> = ({ services, theme, themeClasses }) => (
-  <section id="services" className="min-h-screen flex items-center justify-center p-4">
+  <section id="services" className="flex items-center justify-center p-4 pt-4">
     <div className="w-full max-w-6xl">
-      <div className="text-center mb-16">
+  <div className="text-center mb-10">
         <h2 className={`text-4xl md:text-5xl font-bold ${themeClasses.text} mb-6`}>
           O que posso fazer por <span className="text-[#7CDA3D]">você</span>
         </h2>

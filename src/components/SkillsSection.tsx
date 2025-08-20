@@ -7,9 +7,9 @@ interface SkillsSectionProps {
 }
 
 const SkillsSection: React.FC<SkillsSectionProps> = ({ theme, themeClasses }) => (
-  <section id="skills" className="min-h-screen flex items-center justify-center p-4">
+  <section id="skills" className="flex items-center justify-center p-4 pb-4">
     <div className="w-full max-w-6xl">
-      <div className="text-center mb-16">
+  <div className="text-center mb-10">
         <h2 className={`text-4xl md:text-5xl font-bold ${themeClasses.text} mb-6`}>
           Minhas <span className="text-[#7CDA3D]">Especialidades</span>
         </h2>

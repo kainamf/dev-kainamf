@@ -135,7 +135,7 @@ function App() {
           transform: isHovered ? 'scale(2)' : 'scale(1)'
         }}
       />
-      <div className="relative z-10">
+      <div className="relative z-10 flex flex-col gap-8 md:gap-10 lg:gap-12">
         <HeroSection
           theme={theme}
           themeClasses={themeClasses}
@@ -146,18 +146,23 @@ function App() {
           currentTech={currentTech}
           scrollToSection={scrollToSection}
         />
+        <div className="mt-8" />
         <SkillsSection theme={theme} themeClasses={themeClasses} />
+        <div className="mt-8" />
         <ServicesSection services={services} theme={theme} themeClasses={themeClasses} />
+        <div className="mt-8" />
         <section id="projects" className="min-h-screen flex items-center justify-center p-4">
           <div className="w-full max-w-6xl">
             <ProjectShowcase theme={theme} themeClasses={themeClasses} />
           </div>
         </section>
+        <div className="mt-8" />
         <section id="contact" className="min-h-screen flex items-center justify-center p-4">
           <div className="w-full max-w-4xl">
             <ContactForm />
           </div>
         </section>
+        <div className="mt-8" />
         <Footer theme={theme} themeClasses={themeClasses} />
       </div>
       {/* Custom Styles */}

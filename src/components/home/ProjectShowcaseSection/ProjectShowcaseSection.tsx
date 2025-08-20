@@ -50,7 +50,7 @@ const ProjectShowcaseSection: React.FC<ProjectShowcaseSectionProps> = ({ theme, 
   ];
 
   return (
-    <div className="mb-16">
+  <div>
 
       <div className="text-center mb-12">
         <h2 className={`text-4xl font-bold ${themeClasses.text} mb-4`}>

@@ -35,7 +35,7 @@ const ContactSection: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#212328] rounded-3xl p-8 border border-[#7CDA3D]/20 relative overflow-hidden">
+  <div className="bg-[#212328] rounded-3xl p-8 border border-[#7CDA3D]/20 relative overflow-hidden">
       {/* Background Animation */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-0 left-0 w-32 h-32 bg-[#7CDA3D] rounded-full animate-pulse"></div>

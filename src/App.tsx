@@ -126,34 +126,39 @@ function App() {
         setMobileMenuOpen={setMobileMenuOpen}
         themeClasses={themeClasses}
       />
-      <div className="relative z-10 flex flex-col gap-8 md:gap-10 lg:gap-12">
-        <HeroSection
-          theme={theme}
-          themeClasses={themeClasses}
-          scrollY={scrollY}
-          isHovered={isHovered}
-          setIsHovered={setIsHovered}
-          technologies={technologies}
-          currentTech={currentTech}
-          scrollToSection={scrollToSection}
-        />
-        <div className="mt-8" />
-        <SkillsSection theme={theme} themeClasses={themeClasses} />
-        <div className="mt-8" />Agora, quero dividir melhor o código, em pastas e subpastas, exemplo:
-        'home'
-        <ServicesSection services={services} theme={theme} themeClasses={themeClasses} />
-        <div className="mt-8" />
-        <section id="projects" className="min-h-screen flex items-center justify-center p-4 mb-8">
-          <div className="w-full max-w-6xl">
-            <ProjectShowcaseSection theme={theme} themeClasses={themeClasses} />
-          </div>
-        </section>
-        <section id="contact" className="min-h-screen flex items-center justify-center p-4">
-          <div className="w-full max-w-4xl">
-            <ContactSection />
-          </div>
-        </section>
-        <div className="mt-8" />
+      <div className="relative z-10 flex flex-col">
+        <div className="mb-8">
+          <HeroSection
+            theme={theme}
+            themeClasses={themeClasses}
+            scrollY={scrollY}
+            isHovered={isHovered}
+            setIsHovered={setIsHovered}
+            technologies={technologies}
+            currentTech={currentTech}
+            scrollToSection={scrollToSection}
+          />
+        </div>
+        <div className="mb-8">
+          <SkillsSection theme={theme} themeClasses={themeClasses} />
+        </div>
+        <div className="mb-8">
+          <ServicesSection services={services} theme={theme} themeClasses={themeClasses} />
+        </div>
+        <div className="mb-8">
+          <section id="projects" className="min-h-screen flex items-center justify-center p-4">
+            <div className="w-full max-w-6xl">
+              <ProjectShowcaseSection theme={theme} themeClasses={themeClasses} />
+            </div>
+          </section>
+        </div>
+  <div className="mb-2">
+          <section id="contact" className="min-h-screen flex items-center justify-center p-4">
+            <div className="w-full max-w-4xl">
+              <ContactSection />
+            </div>
+          </section>
+        </div>
         <FooterSection theme={theme} themeClasses={themeClasses} />
       </div>
       {/* Custom Styles */}

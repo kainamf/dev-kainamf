@@ -11,7 +11,10 @@ import ServicesSection from './components/ServicesSection';
 import Footer from './components/Footer';
 
 function App() {
-  const [theme, setTheme] = useState<'dark' | 'light' >('dark');
+  const [theme, setTheme] = useState<'dark' | 'light'>(() => {
+    const stored = localStorage.getItem('theme');
+    return stored === 'light' || stored === 'dark' ? stored : 'dark';
+  });
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
   const [currentTech, setCurrentTech] = useState(0);
@@ -45,6 +48,11 @@ function App() {
     }, 2000);
     return () => clearInterval(interval);
   }, []);
+
+  // Persistir tema no localStorage
+  useEffect(() => {
+    localStorage.setItem('theme', theme);
+  }, [theme]);
 
   const getThemeClasses = () => {
     switch (theme) {

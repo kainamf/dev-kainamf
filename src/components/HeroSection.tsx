@@ -1,4 +1,4 @@
-import { Code2, ArrowRight, Rocket } from 'lucide-react';
+import { Code2, ArrowRight } from 'lucide-react';
 import React from 'react';
 
 interface HeroSectionProps {

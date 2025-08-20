@@ -2,7 +2,7 @@ import { Code2, ArrowRight, Rocket } from 'lucide-react';
 import React from 'react';
 
 interface HeroSectionProps {
-  theme: 'dark' | 'light' | 'neon';
+  theme: 'dark' | 'light';
   themeClasses: { text: string; card: string };
   scrollY: number;
   isHovered: boolean;

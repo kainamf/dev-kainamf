@@ -3,7 +3,7 @@ import Logo from './Logo';
 import { Github, Instagram } from 'lucide-react';
 
 interface FooterProps {
-  theme: 'dark' | 'light' | 'neon';
+  theme: 'dark' | 'light';
   themeClasses: { card: string };
 }
 

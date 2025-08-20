@@ -1,16 +1,15 @@
 import React from 'react';
-import { Sun, Moon, Palette } from 'lucide-react';
+import { Sun, Moon } from 'lucide-react';
 
 interface ThemeToggleProps {
-  theme: 'dark' | 'light' | 'neon';
-  onThemeChange: (theme: 'dark' | 'light' | 'neon') => void;
+  theme: 'dark' | 'light';
+  onThemeChange: (theme: 'dark' | 'light') => void;
 }
 
 const ThemeToggle: React.FC<ThemeToggleProps> = ({ theme, onThemeChange }) => {
   const themes = [
     { key: 'dark', icon: Moon, label: 'Escuro' },
-    { key: 'light', icon: Sun, label: 'Claro' },
-    { key: 'neon', icon: Palette, label: 'Neon' }
+    { key: 'light', icon: Sun, label: 'Claro' }
   ];
 
   return (

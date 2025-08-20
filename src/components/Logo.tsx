@@ -5,7 +5,7 @@ interface LogoProps {
   size?: 'sm' | 'md' | 'lg' | 'xl';
   variant?: 'full' | 'icon' | 'text';
   animated?: boolean;
-  theme?: 'dark' | 'light' | 'neon';
+  theme?: 'dark' | 'light';
 }
 
 const Logo: React.FC<LogoProps> = ({ 

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 
 interface InteractiveBackgroundProps {
-  theme: 'dark' | 'light' | 'neon';
+  theme: 'dark' | 'light';
 }
 
 const InteractiveBackground: React.FC<InteractiveBackgroundProps> = ({ theme }) => {
@@ -35,12 +35,6 @@ const InteractiveBackground: React.FC<InteractiveBackgroundProps> = ({ theme }) 
           return {
             bg: '#f8fafc',
             particles: ['#7CDA3D', '#212328', '#64748b'],
-            connections: '#7CDA3D'
-          };
-        case 'neon':
-          return {
-            bg: '#0a0a0a',
-            particles: ['#7CDA3D', '#ff00ff', '#00ffff', '#ffff00'],
             connections: '#7CDA3D'
           };
         default:

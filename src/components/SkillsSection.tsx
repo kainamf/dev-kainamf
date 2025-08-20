@@ -2,7 +2,7 @@ import React from 'react';
 import SkillsOrb from './SkillsOrb';
 
 interface SkillsSectionProps {
-  theme: 'dark' | 'light' | 'neon';
+  theme: 'dark' | 'light';
   themeClasses: { text: string };
 }
 

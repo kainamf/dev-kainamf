@@ -11,7 +11,7 @@ import ServicesSection from './components/ServicesSection';
 import Footer from './components/Footer';
 
 function App() {
-  const [theme, setTheme] = useState<'dark' | 'light' | 'neon'>('dark');
+  const [theme, setTheme] = useState<'dark' | 'light' >('dark');
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
   const [currentTech, setCurrentTech] = useState(0);
@@ -53,13 +53,6 @@ function App() {
           bg: 'bg-gray-50',
           text: 'text-gray-900',
           card: 'bg-white',
-          accent: 'text-[#7CDA3D]'
-        };
-      case 'neon':
-        return {
-          bg: 'bg-black',
-          text: 'text-white',
-          card: 'bg-gray-900',
           accent: 'text-[#7CDA3D]'
         };
       default:

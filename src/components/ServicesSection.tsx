@@ -10,7 +10,7 @@ interface Service {
 
 interface ServicesSectionProps {
   services: Service[];
-  theme: 'dark' | 'light' | 'neon';
+  theme: 'dark' | 'light';
   themeClasses: { card: string; text: string };
 }
 

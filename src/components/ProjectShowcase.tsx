@@ -3,7 +3,7 @@ import { ExternalLink, Github, Monitor, Smartphone, Zap, Star } from 'lucide-rea
 
 
 interface ProjectShowcaseProps {
-  theme: 'dark' | 'light' | 'neon';
+  theme: 'dark' | 'light';
   themeClasses: { text: string; accent: string };
 }
 

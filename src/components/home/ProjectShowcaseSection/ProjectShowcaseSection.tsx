@@ -55,7 +55,7 @@ const ProjectShowcaseSection: React.FC<ProjectShowcaseSectionProps> = ({ theme, 
     if (userInteracted.current) return;
     intervalRef.current = setInterval(() => {
       setActiveProject((prev) => (prev + 1) % projects.length);
-    }, 10000); // 10 segundos
+    }, 5000); // 5 segundos
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };

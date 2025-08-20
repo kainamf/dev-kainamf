@@ -4,10 +4,13 @@ interface InteractiveBackgroundProps {
   theme: 'dark' | 'light';
 }
 
+// Apenas os símbolos: </>, {}, λ, ⚙, ∞
+const SYMBOLS = ['</>', '{}', 'λ', '⚙', '∞'];
+
 const InteractiveBackground: React.FC<InteractiveBackgroundProps> = ({ theme }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mouseRef = useRef({ x: 0, y: 0 });
-  const particlesRef = useRef<Array<{
+  type Particle = {
     x: number;
     y: number;
     vx: number;
@@ -15,7 +18,11 @@ const InteractiveBackground: React.FC<InteractiveBackgroundProps> = ({ theme }) 
     size: number;
     opacity: number;
     color: string;
-  }>>([]);
+    symbol: string;
+    angle: number;
+    rotationSpeed: number;
+  };
+  const particlesRef = useRef<Particle[]>([]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -30,37 +37,49 @@ const InteractiveBackground: React.FC<InteractiveBackgroundProps> = ({ theme }) 
     };
 
     const getThemeColors = () => {
+      // Paleta: verde, cinza, preto
       switch (theme) {
         case 'light':
           return {
             bg: '#f8fafc',
-            particles: ['#7CDA3D', '#212328', '#64748b'],
-            connections: '#7CDA3D'
+            particles: ['#7CDA3D', '#212328', '#64748b'], // verde, preto, cinza
+            connections: '#7CDA3D',
+            symbol: '#212328',
+            shadow: 'rgba(124,218,61,0.18)'
           };
         default:
           return {
             bg: '#030303',
-            particles: ['#7CDA3D', '#212328', '#4a5568'],
-            connections: '#7CDA3D'
+            particles: ['#7CDA3D', '#212328', '#4a5568'], // verde, preto, cinza escuro
+            connections: '#7CDA3D',
+            symbol: '#7CDA3D',
+            shadow: 'rgba(124,218,61,0.13)'
           };
       }
     };
 
     const initParticles = () => {
       const colors = getThemeColors().particles;
-      particlesRef.current = Array.from({ length: 50 }, () => ({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 0.5) * 0.5,
-        size: Math.random() * 3 + 1,
-        opacity: Math.random() * 0.5 + 0.2,
-        color: colors[Math.floor(Math.random() * colors.length)]
-      }));
+      particlesRef.current = Array.from({ length: 48 }, () => {
+        const symbol = SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)];
+        return {
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          vx: (Math.random() - 0.5) * 0.28, // velocidade reduzida
+          vy: (Math.random() - 0.5) * 0.28,
+          size: Math.random() * 10 + 10,
+          opacity: Math.random() * 0.4 + 0.4,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          symbol,
+          angle: Math.random() * Math.PI * 2,
+          rotationSpeed: (Math.random() - 0.5) * 0.006 // rotação mais lenta
+        };
+      });
     };
 
     const animate = () => {
       const colors = getThemeColors();
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.fillStyle = colors.bg;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -69,41 +88,55 @@ const InteractiveBackground: React.FC<InteractiveBackgroundProps> = ({ theme }) 
         // Update position
         particle.x += particle.vx;
         particle.y += particle.vy;
+        particle.angle += particle.rotationSpeed;
 
         // Bounce off edges
         if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
         if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
 
-        // Mouse interaction
+        // Mouse interaction: atração e rotação
         const dx = mouseRef.current.x - particle.x;
         const dy = mouseRef.current.y - particle.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
-
-        if (distance < 100) {
-          const force = (100 - distance) / 100;
-          particle.vx += dx * force * 0.001;
-          particle.vy += dy * force * 0.001;
+        if (distance < 120) {
+          const force = (120 - distance) / 120;
+          particle.vx += dx * force * 0.0012;
+          particle.vy += dy * force * 0.0012;
+          particle.rotationSpeed += (Math.random() - 0.5) * 0.002;
         }
 
-        // Draw particle
-        ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        ctx.fillStyle = particle.color + Math.floor(particle.opacity * 255).toString(16).padStart(2, '0');
-        ctx.fill();
+  // Desenhar apenas os símbolos escolhidos
+  ctx.save();
+  ctx.globalAlpha = particle.opacity;
+  ctx.translate(particle.x, particle.y);
+  ctx.rotate(particle.angle);
+  ctx.shadowColor = colors.shadow;
+  ctx.shadowBlur = 8;
+  ctx.font = `${particle.size * 2}px monospace`;
+  ctx.fillStyle = colors.symbol;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(particle.symbol, 0, 0);
+  ctx.restore();
 
         // Draw connections
         particlesRef.current.slice(index + 1).forEach(otherParticle => {
           const dx = particle.x - otherParticle.x;
           const dy = particle.y - otherParticle.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
-
           if (distance < 100) {
+            ctx.save();
+            ctx.globalAlpha = 0.15 * (1 - distance / 100);
             ctx.beginPath();
+            ctx.moveTo(0, 0);
             ctx.moveTo(particle.x, particle.y);
             ctx.lineTo(otherParticle.x, otherParticle.y);
-            ctx.strokeStyle = colors.connections + Math.floor((1 - distance / 100) * 50).toString(16).padStart(2, '0');
-            ctx.lineWidth = 1;
+            ctx.strokeStyle = colors.connections;
+            ctx.lineWidth = 1.2;
+            ctx.shadowColor = colors.shadow;
+            ctx.shadowBlur = 6;
             ctx.stroke();
+            ctx.restore();
           }
         });
       });
@@ -132,7 +165,7 @@ const InteractiveBackground: React.FC<InteractiveBackgroundProps> = ({ theme }) 
     <canvas
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none z-0"
-      style={{ opacity: 0.6 }}
+      style={{ opacity: 0.7, transition: 'opacity 0.3s' }}
     />
   );
 };

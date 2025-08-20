@@ -26,19 +26,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ theme, themeClasses, scrollY,
         <Code2 size={48} className="text-[#030303] animate-pulse" />
       </div>
       <h1 className={`text-6xl md:text-8xl font-bold ${themeClasses.text} mb-6 relative`}>
-        <span className="inline-block animate-bounce">D</span>
-        <span className="inline-block animate-bounce" style={{animationDelay: '0.1s'}}>e</span>
-        <span className="inline-block animate-bounce" style={{animationDelay: '0.2s'}}>s</span>
-        <span className="inline-block animate-bounce" style={{animationDelay: '0.3s'}}>e</span>
-        <span className="inline-block animate-bounce" style={{animationDelay: '0.4s'}}>n</span>
-        <span className="inline-block animate-bounce" style={{animationDelay: '0.5s'}}>v</span>
-        <span className="inline-block animate-bounce" style={{animationDelay: '0.6s'}}>o</span>
-        <span className="inline-block animate-bounce" style={{animationDelay: '0.7s'}}>l</span>
-        <span className="inline-block animate-bounce" style={{animationDelay: '0.8s'}}>v</span>
-        <span className="inline-block animate-bounce" style={{animationDelay: '0.9s'}}>e</span>
-        <span className="inline-block animate-bounce" style={{animationDelay: '1s'}}>d</span>
-        <span className="inline-block animate-bounce" style={{animationDelay: '1.1s'}}>o</span>
-        <span className="inline-block animate-bounce" style={{animationDelay: '1.2s'}}>r</span>
+        Desenvolvedor
         <br />
         <span className="text-[#7CDA3D] bg-gradient-to-r from-[#7CDA3D] to-[#7CDA3D]/70 bg-clip-text text-transparent animate-pulse">
           Full Stack
@@ -47,13 +35,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ theme, themeClasses, scrollY,
       <p className={`text-xl md:text-2xl ${theme === 'light' ? 'text-gray-600' : 'text-gray-300'} max-w-3xl mx-auto leading-relaxed mb-8 opacity-0 animate-fade-in-up`} style={{animationDelay: '1s', animationFillMode: 'forwards'}}>
         Criação de sites e landing pages modernas, responsivas e otimizadas para conversão
       </p>
-      <div className={`inline-flex items-center gap-2 ${themeClasses.card} px-6 py-3 rounded-full border border-[#7CDA3D]/30 mb-8`}>
-        <Rocket size={20} className="text-[#7CDA3D]" />
-        <span className={`${themeClasses.text} font-medium`}>Especialista em:</span>
-        <span className="text-[#7CDA3D] font-bold min-w-[100px] text-left transition-all duration-500">
-          {technologies[currentTech]}
-        </span>
-      </div>
+    
       <div className="flex flex-col sm:flex-row gap-6 justify-center">
         <button 
           onClick={() => scrollToSection('contact')}

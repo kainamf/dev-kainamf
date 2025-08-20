@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Code2, Globe, Layers, ArrowRight, Github, Instagram, Monitor, Smartphone, Zap, Palette, Rocket, Star, Menu, X } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Code2, Globe, Layers, ArrowRight, Github, Instagram, Zap, Rocket, Star, Menu, X } from 'lucide-react';
 import ThemeToggle from './components/ThemeToggle';
 import SkillsOrb from './components/SkillsOrb';
 import InteractiveBackground from './components/InteractiveBackground';

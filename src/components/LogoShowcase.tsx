@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Logo from './Logo';
-import { Download, Copy, Check, ArrowLeft } from 'lucide-react';
+import { Copy, Check, ArrowLeft } from 'lucide-react';
 
 interface LogoShowcaseProps {
   onBack?: () => void;

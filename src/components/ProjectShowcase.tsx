@@ -7,33 +7,39 @@ const ProjectShowcase: React.FC = () => {
   const projects = [
     {
       id: 1,
-      title: "E-commerce Moderno",
-      description: "Plataforma completa de vendas online com painel administrativo",
-      image: "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800",
-      tech: ["React", "Node.js", "MongoDB", "Stripe"],
-      features: ["Pagamentos", "Dashboard", "Mobile-First"],
-      category: "Fullstack",
-      color: "#7CDA3D"
+  title: "Psi Lara Frasson",
+      description: "Site institucional para psicóloga, com blog, formulário de contato e área de artigos.",
+  image: "/assets/images/psilarafrasson.png",
+      tech: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
+      features: ["Blog", "Contato", "Responsivo"],
+      category: "Frontend",
+      color: "#7CDA3D",
+      github: "https://github.com/kainamf/psilarafrasson",
+      deploy: "https://www.larafrassonpsicologainfantil.com/"
     },
     {
       id: 2,
-      title: "Landing Page Conversão",
-      description: "Página otimizada para alta conversão com A/B testing",
-      image: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800",
-      tech: ["Next.js", "Tailwind", "Analytics"],
-      features: ["SEO", "Performance", "Conversão"],
+      title: "Tríade da Apresentação Pessoal",
+      description: "Landing page interativa para apresentação de conteúdo e captação de leads.",
+  image: "/assets/images/triade.png",
+      tech: ["React","Next.js", "TypeScript", "Tailwind CSS"],
+      features: ["Landing Page", "Leads", "Performance"],
       category: "Frontend",
-      color: "#4ECDC4"
+      color: "#4ECDC4",
+      github: "https://github.com/kainamf/triade-da-apresentacao-pessoal",
+      deploy: "https://triade-da-apresentacao-pessoal.vercel.app/"
     },
     {
       id: 3,
-      title: "App Mobile Híbrido",
-      description: "Aplicativo cross-platform com sincronização em tempo real",
-      image: "https://images.pexels.com/photos/147413/twitter-facebook-together-exchange-of-information-147413.jpeg?auto=compress&cs=tinysrgb&w=800",
-      tech: ["React Native", "Firebase", "Redux"],
-      features: ["Offline", "Push", "Real-time"],
-      category: "Mobile",
-      color: "#FF6B6B"
+      title: "Psi Gabrielle Mazulo",
+      description: "Site profissional para psicóloga, com informações, contato e design moderno.",
+  image: "/assets/images/psigabrielle.png",
+      tech: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
+      features: ["Institucional", "Contato", "SEO"],
+      category: "Frontend",
+      color: "#FF6B6B",
+      github: "https://github.com/kainamf/psigabrielle",
+      deploy: "https://psigabriellemazulo.vercel.app/"
     }
   ];
 
@@ -130,12 +136,24 @@ const ProjectShowcase: React.FC = () => {
               
               {/* Action Buttons */}
               <div className="absolute bottom-4 right-4 flex gap-2">
-                <button className="p-3 bg-[#7CDA3D] text-[#030303] rounded-full hover:scale-110 transition-transform duration-300 shadow-lg">
+                <a
+                  href={projects[activeProject].deploy}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 bg-[#7CDA3D] text-[#030303] rounded-full hover:scale-110 transition-transform duration-300 shadow-lg"
+                  title="Ver site ao vivo"
+                >
                   <ExternalLink size={18} />
-                </button>
-                <button className="p-3 bg-white/20 backdrop-blur-sm text-white rounded-full hover:scale-110 transition-transform duration-300">
+                </a>
+                <a
+                  href={projects[activeProject].github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 bg-white/20 backdrop-blur-sm text-white rounded-full hover:scale-110 transition-transform duration-300"
+                  title="Ver código no GitHub"
+                >
                   <Github size={18} />
-                </button>
+                </a>
               </div>
             </div>
             

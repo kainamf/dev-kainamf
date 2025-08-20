@@ -24,16 +24,23 @@ const Header: React.FC<HeaderProps> = ({
   themeClasses
 }) => {
   return (
-    <header className="fixed top-0 left-0 w-full z-30 flex items-center justify-between px-4 py-2 bg-transparent">
-      <Navigation
-        menuItems={menuItems}
-        activeSection={activeSection}
-        scrollToSection={scrollToSection}
-        mobileMenuOpen={mobileMenuOpen}
-        setMobileMenuOpen={setMobileMenuOpen}
-        themeClasses={themeClasses}
-      />
-      <ThemeToggle theme={theme} onThemeChange={onThemeChange} />
+    <header className="fixed top-0 left-0 w-full z-30 bg-black/30 backdrop-blur-md border-b border-white/10">
+      <div className="max-w-6xl mx-auto flex items-center justify-between px-4 py-2">
+        {/* Logo */}
+        <div className="flex items-center gap-2">
+          <Navigation
+            menuItems={menuItems}
+            activeSection={activeSection}
+            scrollToSection={scrollToSection}
+            mobileMenuOpen={mobileMenuOpen}
+            setMobileMenuOpen={setMobileMenuOpen}
+            themeClasses={themeClasses}
+            showLogo={true}
+          />
+        </div>
+        {/* Theme Toggle */}
+        <ThemeToggle theme={theme} onThemeChange={onThemeChange} />
+      </div>
     </header>
   );
 };

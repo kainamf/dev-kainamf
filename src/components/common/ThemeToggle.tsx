@@ -13,7 +13,7 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ theme, onThemeChange }) => {
   ];
 
   return (
-    <div className="fixed top-6 right-6 z-50 flex gap-2 bg-black/20 backdrop-blur-md rounded-full p-2 border border-white/10">
+    <div className="flex gap-2 bg-black/20 backdrop-blur-md rounded-full p-2 border border-white/10">
       {themes.map(({ key, icon: Icon, label }) => (
         <button
           key={key}

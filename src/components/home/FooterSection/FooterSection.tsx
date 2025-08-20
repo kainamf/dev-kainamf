@@ -1,13 +1,13 @@
 import React from 'react';
-import Logo from '../Logo';
+import Logo from '../../common/Logo';
 import { Github, Instagram } from 'lucide-react';
 
-interface FooterProps {
+interface FooterSectionProps {
   theme: 'dark' | 'light';
   themeClasses: { card: string };
 }
 
-const Footer: React.FC<FooterProps> = ({ theme, themeClasses }) => (
+const FooterSection: React.FC<FooterSectionProps> = ({ theme, themeClasses }) => (
   <footer className="py-12 px-4">
     <div className="max-w-6xl mx-auto">
       <div className="flex flex-col md:flex-row items-center justify-between gap-8">
@@ -42,4 +42,4 @@ const Footer: React.FC<FooterProps> = ({ theme, themeClasses }) => (
   </footer>
 );
 
-export default Footer;
+export default FooterSection;

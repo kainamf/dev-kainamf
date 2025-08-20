@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { ExternalLink, Github, Monitor, Smartphone, Zap, Star } from 'lucide-react';
 
 
-interface ProjectShowcaseProps {
+interface ProjectShowcaseSectionProps {
   theme: 'dark' | 'light';
   themeClasses: { text: string; accent: string };
 }
 
-const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ theme, themeClasses }) => {
+const ProjectShowcaseSection: React.FC<ProjectShowcaseSectionProps> = ({ theme, themeClasses }) => {
   const [activeProject, setActiveProject] = useState(0);
 
   const projects = [
@@ -197,4 +197,4 @@ const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ theme, themeClasses }
   );
 };
 
-export default ProjectShowcase;
+export default ProjectShowcaseSection;

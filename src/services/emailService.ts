@@ -1,12 +1,12 @@
 import emailjs from 'emailjs-com';
 
-export interface ContactFormData {
+export interface ContactSectionData {
   name: string;
   email: string;
   message: string;
 }
 
-export async function sendContactEmail(data: ContactFormData): Promise<void> {
+export async function sendContactEmail(data: ContactSectionData): Promise<void> {
   const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
   const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
   const USER_ID = process.env.REACT_APP_EMAILJS_USER_ID;

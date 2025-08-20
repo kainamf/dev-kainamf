@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Send, CheckCircle, AlertCircle, User, Mail, MessageSquare } from 'lucide-react';
-import { sendContactEmail } from '../../services/emailService';
+import { sendContactEmail } from '../../../services/emailService';
 
-const ContactForm: React.FC = () => {
+const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -172,4 +172,4 @@ const ContactForm: React.FC = () => {
   );
 };
 
-export default ContactForm;
+export default ContactSection;

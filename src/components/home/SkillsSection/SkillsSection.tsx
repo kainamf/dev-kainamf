@@ -1,5 +1,5 @@
 import React from 'react';
-import SkillsOrb from './skills/SkillsOrb';
+import SkillsOrb from './SkillsOrb';
 
 interface SkillsSectionProps {
   theme: 'dark' | 'light';

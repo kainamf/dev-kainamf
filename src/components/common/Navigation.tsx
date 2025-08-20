@@ -1,6 +1,6 @@
 import { Menu, X } from 'lucide-react';
-import Logo from '../Logo';
 import React from 'react';
+import Logo from './Logo';
 
 interface NavigationProps {
   menuItems: { id: string; label: string }[];

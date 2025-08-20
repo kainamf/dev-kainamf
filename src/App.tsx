@@ -1,14 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Globe, Layers, Zap } from 'lucide-react';
-import ThemeToggle from './components/ThemeToggle';
-import InteractiveBackground from './components/InteractiveBackground';
-import ProjectShowcase from './components/home/ProjectShowcase';
-import ContactForm from './components/home/ContactForm';
-import Navigation from './components/home/Navigation';
-import HeroSection from './components/home/HeroSection';
-import SkillsSection from './components/home/SkillsSection';
-import ServicesSection from './components/home/ServicesSection';
-import Footer from './components/home/Footer';
+import Header from './components/common/Header';
+import InteractiveBackground from './components/common/InteractiveBackground';
+import ProjectShowcaseSection from './components/home/ProjectShowcaseSection/ProjectShowcaseSection';
+import HeroSection from './components/home/HeroSection/HeroSection';
+import SkillsSection from './components/home/SkillsSection/SkillsSection';
+import ServicesSection from './components/home/ServicesSection/ServicesSection';
+import FooterSection from './components/home/FooterSection/FooterSection';
+import ContactSection from './components/home/ContactSection/ContactSection';
 
 function App() {
   const [theme, setTheme] = useState<'dark' | 'light'>(() => {
@@ -23,7 +22,7 @@ function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const technologies = ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Node.js', 'MongoDB'];
-  
+
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
@@ -35,7 +34,7 @@ function App() {
 
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('scroll', handleScroll);
-    
+
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('scroll', handleScroll);
@@ -117,23 +116,15 @@ function App() {
   return (
     <div className={`min-h-screen ${themeClasses.bg} relative overflow-hidden transition-all duration-500`}>
       <InteractiveBackground theme={theme} />
-      <ThemeToggle theme={theme} onThemeChange={setTheme} />
-      <Navigation
+      <Header
+        theme={theme}
+        onThemeChange={setTheme}
         menuItems={menuItems}
         activeSection={activeSection}
         scrollToSection={scrollToSection}
         mobileMenuOpen={mobileMenuOpen}
         setMobileMenuOpen={setMobileMenuOpen}
         themeClasses={themeClasses}
-      />
-      {/* Mouse Follower */}
-      <div
-        className="fixed w-6 h-6 bg-[#7CDA3D]/20 rounded-full pointer-events-none z-50 transition-all duration-300 ease-out"
-        style={{
-          left: mousePosition.x - 12,
-          top: mousePosition.y - 12,
-          transform: isHovered ? 'scale(2)' : 'scale(1)'
-        }}
       />
       <div className="relative z-10 flex flex-col gap-8 md:gap-10 lg:gap-12">
         <HeroSection
@@ -149,21 +140,21 @@ function App() {
         <div className="mt-8" />
         <SkillsSection theme={theme} themeClasses={themeClasses} />
         <div className="mt-8" />Agora, quero dividir melhor o código, em pastas e subpastas, exemplo:
-'home'
+        'home'
         <ServicesSection services={services} theme={theme} themeClasses={themeClasses} />
         <div className="mt-8" />
         <section id="projects" className="min-h-screen flex items-center justify-center p-4 mb-8">
           <div className="w-full max-w-6xl">
-            <ProjectShowcase theme={theme} themeClasses={themeClasses} />
+            <ProjectShowcaseSection theme={theme} themeClasses={themeClasses} />
           </div>
         </section>
         <section id="contact" className="min-h-screen flex items-center justify-center p-4">
           <div className="w-full max-w-4xl">
-            <ContactForm />
+            <ContactSection />
           </div>
         </section>
         <div className="mt-8" />
-        <Footer theme={theme} themeClasses={themeClasses} />
+        <FooterSection theme={theme} themeClasses={themeClasses} />
       </div>
       {/* Custom Styles */}
       <style>{`

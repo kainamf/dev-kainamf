@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Send, CheckCircle, AlertCircle, User, Mail, MessageSquare } from 'lucide-react';
-import { sendContactEmail } from '../services/emailService';
+import { sendContactEmail } from '../../services/emailService';
 
 const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState({

@@ -2,13 +2,13 @@ import { useState, useEffect } from 'react';
 import { Globe, Layers, Zap } from 'lucide-react';
 import ThemeToggle from './components/ThemeToggle';
 import InteractiveBackground from './components/InteractiveBackground';
-import ProjectShowcase from './components/ProjectShowcase';
-import ContactForm from './components/ContactForm';
-import Navigation from './components/Navigation';
-import HeroSection from './components/HeroSection';
-import SkillsSection from './components/SkillsSection';
-import ServicesSection from './components/ServicesSection';
-import Footer from './components/Footer';
+import ProjectShowcase from './components/home/ProjectShowcase';
+import ContactForm from './components/home/ContactForm';
+import Navigation from './components/home/Navigation';
+import HeroSection from './components/home/HeroSection';
+import SkillsSection from './components/home/SkillsSection';
+import ServicesSection from './components/home/ServicesSection';
+import Footer from './components/home/Footer';
 
 function App() {
   const [theme, setTheme] = useState<'dark' | 'light'>(() => {
@@ -148,15 +148,15 @@ function App() {
         />
         <div className="mt-8" />
         <SkillsSection theme={theme} themeClasses={themeClasses} />
-        <div className="mt-8" />
+        <div className="mt-8" />Agora, quero dividir melhor o código, em pastas e subpastas, exemplo:
+'home'
         <ServicesSection services={services} theme={theme} themeClasses={themeClasses} />
         <div className="mt-8" />
-        <section id="projects" className="min-h-screen flex items-center justify-center p-4">
+        <section id="projects" className="min-h-screen flex items-center justify-center p-4 mb-8">
           <div className="w-full max-w-6xl">
             <ProjectShowcase theme={theme} themeClasses={themeClasses} />
           </div>
         </section>
-        <div className="mt-8" />
         <section id="contact" className="min-h-screen flex items-center justify-center p-4">
           <div className="w-full max-w-4xl">
             <ContactForm />

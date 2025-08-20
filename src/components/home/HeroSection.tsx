@@ -14,7 +14,7 @@ interface HeroSectionProps {
 
 const HeroSection: React.FC<HeroSectionProps> = ({ theme, themeClasses, scrollY, isHovered, setIsHovered, technologies, currentTech, scrollToSection }) => (
   <section id="home" className="min-h-screen flex items-center justify-center p-4">
-    <div className="w-full max-w-6xl text-center">
+    <div className="w-full max-w-6xl text-center flex flex-col items-center gap-8">
       <div 
         className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-[#7CDA3D] to-[#7CDA3D]/80 rounded-3xl mb-8 transform transition-all duration-500 hover:scale-110 hover:rotate-12 shadow-2xl shadow-[#7CDA3D]/20"
         onMouseEnter={() => setIsHovered(true)}
@@ -25,18 +25,18 @@ const HeroSection: React.FC<HeroSectionProps> = ({ theme, themeClasses, scrollY,
       >
         <Code2 size={48} className="text-[#030303] animate-pulse" />
       </div>
-      <h1 className={`text-6xl md:text-8xl font-bold ${themeClasses.text} mb-6 relative`}>
+  <h1 className={`text-6xl md:text-8xl font-bold ${themeClasses.text} mb-8 relative`}>
         Desenvolvedor
         <br />
         <span className="text-[#7CDA3D] bg-gradient-to-r from-[#7CDA3D] to-[#7CDA3D]/70 bg-clip-text text-transparent animate-pulse">
           Full Stack
         </span>
       </h1>
-      <p className={`text-xl md:text-2xl ${theme === 'light' ? 'text-gray-600' : 'text-gray-300'} max-w-3xl mx-auto leading-relaxed mb-8 opacity-0 animate-fade-in-up`} style={{animationDelay: '1s', animationFillMode: 'forwards'}}>
+  <p className={`text-xl md:text-2xl ${theme === 'light' ? 'text-gray-600' : 'text-gray-300'} max-w-3xl mx-auto leading-relaxed mb-8 opacity-0 animate-fade-in-up`} style={{animationDelay: '1s', animationFillMode: 'forwards'}}>
         Criação de sites e landing pages modernas, responsivas e otimizadas para conversão
       </p>
     
-      <div className="flex flex-col sm:flex-row gap-6 justify-center">
+  <div className="flex flex-col sm:flex-row gap-8 justify-center">
         <button 
           onClick={() => scrollToSection('contact')}
           className="group/btn bg-[#7CDA3D] text-[#030303] px-10 py-4 rounded-2xl font-bold text-lg hover:bg-[#7CDA3D]/90 transition-all duration-300 flex items-center justify-center gap-3 hover:scale-105 hover:shadow-2xl hover:shadow-[#7CDA3D]/30 relative overflow-hidden"

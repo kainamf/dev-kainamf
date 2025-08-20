@@ -31,10 +31,7 @@ const SkillsOrb: React.FC = () => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Central Hub */}
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-gradient-to-br from-[#7CDA3D] to-[#7CDA3D]/80 rounded-full flex items-center justify-center shadow-2xl shadow-[#7CDA3D]/30 z-10">
-        <Code2 size={32} className="text-[#030303] animate-pulse" />
-      </div>
+  {/* Central Hub removido */}
 
       {/* Skill Orbs */}
       {skills.map((skill, index) => {
@@ -50,6 +47,7 @@ const SkillsOrb: React.FC = () => {
             className={`
               absolute w-16 h-16 rounded-full flex items-center justify-center cursor-pointer transition-all duration-500 group
               ${isActive ? 'scale-125 shadow-2xl' : 'scale-100 hover:scale-110'}
+              z-10
             `}
             style={{
               left: `calc(50% + ${x}px - 32px)`,
@@ -59,18 +57,12 @@ const SkillsOrb: React.FC = () => {
               animation: isActive ? 'pulse 2s infinite' : 'none'
             }}
             onClick={() => setActiveSkill(index)}
+            onMouseEnter={() => setActiveSkill(index)}
           >
             <skill.icon 
               size={24} 
               className={`text-white transition-transform duration-300 ${isActive ? 'animate-bounce' : 'group-hover:scale-110'}`} 
             />
-            
-            {/* Tooltip */}
-            <div className="absolute -bottom-16 left-1/2 transform -translate-x-1/2 bg-black/90 text-white text-xs px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
-              <div className="font-bold">{skill.name}</div>
-              <div className="text-gray-300">{skill.description}</div>
-            </div>
-
             {/* Connection Line */}
             <div 
               className={`absolute w-px bg-gradient-to-r from-transparent via-white/30 to-transparent transition-opacity duration-500 ${isActive ? 'opacity-100' : 'opacity-20'}`}
@@ -86,15 +78,28 @@ const SkillsOrb: React.FC = () => {
         );
       })}
 
-      {/* Active Skill Info */}
-      <div className="absolute -bottom-20 left-1/2 transform -translate-x-1/2 text-center">
-        <h3 className="text-[#7CDA3D] font-bold text-xl mb-1">
-          {skills[activeSkill].name}
-        </h3>
-        <p className="text-gray-400 text-sm">
-          {skills[activeSkill].description}
-        </p>
-      </div>
+      {/* Tooltip global, posicionado sobre o orb ativo/hovered */}
+      {(() => {
+        const angle = (activeSkill * 360) / skills.length;
+        const radius = 120;
+        const x = Math.cos((angle * Math.PI) / 180) * radius;
+        const y = Math.sin((angle * Math.PI) / 180) * radius;
+        return (
+          <div
+            className="pointer-events-none z-50 absolute"
+            style={{
+              left: `calc(50% + ${x}px)`,
+              top: `calc(50% + ${y + 48}px)`, // 48px = orb radius + spacing
+              transform: 'translate(-50%, 0)'
+            }}
+          >
+            <div className="bg-black/90 text-white text-xs px-3 py-2 rounded-lg whitespace-nowrap shadow-lg">
+              <div className="font-bold">{skills[activeSkill].name}</div>
+              <div className="text-gray-300">{skills[activeSkill].description}</div>
+            </div>
+          </div>
+        );
+      })()}
     </div>
   );
 };

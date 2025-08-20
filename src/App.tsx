@@ -149,7 +149,7 @@ function App() {
         <ServicesSection services={services} theme={theme} themeClasses={themeClasses} />
         <section id="projects" className="min-h-screen flex items-center justify-center p-4">
           <div className="w-full max-w-6xl">
-            <ProjectShowcase />
+            <ProjectShowcase theme={theme} themeClasses={themeClasses} />
           </div>
         </section>
         <section id="contact" className="min-h-screen flex items-center justify-center p-4">

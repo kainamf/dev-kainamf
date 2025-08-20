@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import { ExternalLink, Github, Monitor, Smartphone, Zap, Star } from 'lucide-react';
 
-const ProjectShowcase: React.FC = () => {
+
+interface ProjectShowcaseProps {
+  theme: 'dark' | 'light' | 'neon';
+  themeClasses: { text: string; accent: string };
+}
+
+const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ theme, themeClasses }) => {
   const [activeProject, setActiveProject] = useState(0);
 
   const projects = [
@@ -45,11 +51,12 @@ const ProjectShowcase: React.FC = () => {
 
   return (
     <div className="mb-16">
+
       <div className="text-center mb-12">
-        <h2 className="text-4xl font-bold text-white mb-4">
-          Projetos em <span className="text-[#7CDA3D]">Destaque</span>
+        <h2 className={`text-4xl font-bold ${themeClasses.text} mb-4`}>
+          Projetos em <span className={themeClasses.accent}>Destaque</span>
         </h2>
-        <p className="text-gray-400 text-lg">
+        <p className={`text-lg ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}>
           Alguns exemplos do que posso criar para você
         </p>
       </div>

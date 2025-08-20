@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Send, CheckCircle, AlertCircle, User, Mail, MessageSquare } from 'lucide-react';
+import { sendContactEmail } from '../services/emailService';
 
 const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -13,13 +14,17 @@ const ContactForm: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('sending');
-    
-    // Simular envio
-    setTimeout(() => {
+    try {
+      await sendContactEmail(formData);
       setStatus('success');
       setFormData({ name: '', email: '', message: '' });
       setTimeout(() => setStatus('idle'), 3000);
-    }, 2000);
+    } catch (err) {
+      // Log detalhado para debug
+      // eslint-disable-next-line no-console
+      console.error('Erro ao enviar e-mail:', err);
+      setStatus('error');
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {

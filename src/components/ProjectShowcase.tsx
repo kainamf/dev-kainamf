@@ -31,7 +31,7 @@ const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ theme, themeClasses }
       tech: ["React","Next.js", "TypeScript", "Tailwind CSS"],
       features: ["Landing Page", "Leads", "Performance"],
       category: "Frontend",
-      color: "#4ECDC4",
+      color: "#7CDA3D",
       github: "https://github.com/kainamf/triade-da-apresentacao-pessoal",
       deploy: "https://triade-da-apresentacao-pessoal.vercel.app/"
     },
@@ -43,7 +43,7 @@ const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ theme, themeClasses }
       tech: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
       features: ["Institucional", "Contato", "SEO"],
       category: "Frontend",
-      color: "#FF6B6B",
+      color: "#7CDA3D",
       github: "https://github.com/kainamf/psigabrielle",
       deploy: "https://psigabriellemazulo.vercel.app/"
     }

@@ -13,7 +13,7 @@ interface HeroSectionProps {
 }
 
 const HeroSection: React.FC<HeroSectionProps> = ({ theme, themeClasses, scrollY, isHovered, setIsHovered, technologies, currentTech, scrollToSection }) => (
-  <section id="home" className="min-h-screen flex items-center justify-center p-4">
+  <section id="home" className="min-h-screen flex items-center justify-center p-4 pt-24 sm:pt-32">
     <div className="w-full max-w-6xl text-center flex flex-col items-center gap-8">
       <div 
         className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-[#7CDA3D] to-[#7CDA3D]/80 rounded-3xl mb-8 transform transition-all duration-500 hover:scale-110 hover:rotate-12 shadow-2xl shadow-[#7CDA3D]/20"

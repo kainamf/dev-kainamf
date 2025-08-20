@@ -1,0 +1,30 @@
+/* Animations for the project (import in index.css) */
+
+@keyframes explode-mini-icon-cartesian {
+  0% {
+    opacity: 1;
+    filter: blur(1.5px);
+    transform: translate(-50%, -50%) scale(0.7);
+  }
+  30% {
+    opacity: 1;
+    filter: blur(1px);
+  }
+  60% {
+    opacity: 1;
+    filter: blur(0.5px);
+  }
+  100% {
+    opacity: 0;
+    filter: blur(0px);
+    /* Explode para X/Y calculado */
+    transform:
+      translate(-50%, -50%) scale(1.2)
+      translate(var(--explode-x, 0px), var(--explode-y, 0px));
+  }
+}
+
+.mini-icon {
+  pointer-events: none;
+  z-index: 50;
+}

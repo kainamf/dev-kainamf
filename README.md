@@ -41,5 +41,3 @@ Este é o repositório do site pessoal e portfólio de Kainã Freitas, desenvolv
 - `src/index.css` — Estilos globais e utilitários
 - `src/animations.css` — Animações customizadas
 - `public/` — Assets estáticos
-
-<!-- Este é um comentário e não será exibido no README renderizado -->

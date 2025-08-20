@@ -11,7 +11,7 @@ const Footer: React.FC<FooterProps> = ({ theme, themeClasses }) => (
   <footer className="py-12 px-4">
     <div className="max-w-6xl mx-auto">
       <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-        <Logo size="md" />
+  <Logo size="md" theme={themeClasses.card === 'bg-white' ? 'light' : 'dark'} />
         <div className="flex justify-center gap-8">
           <a 
             href="https://github.com/kainamf" 

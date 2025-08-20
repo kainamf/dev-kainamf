@@ -5,12 +5,14 @@ interface LogoProps {
   size?: 'sm' | 'md' | 'lg' | 'xl';
   variant?: 'full' | 'icon' | 'text';
   animated?: boolean;
+  theme?: 'dark' | 'light' | 'neon';
 }
 
 const Logo: React.FC<LogoProps> = ({ 
   size = 'md', 
   variant = 'full', 
-  animated = true 
+  animated = true,
+  theme = 'dark'
 }) => {
   const sizeClasses = {
     sm: { container: 'h-8', icon: 'w-6 h-6', text: 'text-lg', iconSize: 20 },
@@ -46,12 +48,8 @@ const Logo: React.FC<LogoProps> = ({
   if (variant === 'text') {
     return (
       <div className="flex items-center gap-2">
-        <span className={`${currentSize.text} font-bold text-white`}>
-          Dev
-        </span>
-        <span className={`${currentSize.text} font-bold text-[#7CDA3D]`}>
-          KMF
-        </span>
+        <span className={`${currentSize.text} font-bold ${theme === 'light' ? 'text-[#030303]' : 'text-white'}`}>Dev</span>
+        <span className={`${currentSize.text} font-bold text-[#7CDA3D]`}>KMF</span>
       </div>
     );
   }
@@ -76,19 +74,14 @@ const Logo: React.FC<LogoProps> = ({
           </div>
         )}
       </div>
-
       {/* Text */}
       <div className="flex flex-col leading-none">
         <div className="flex items-center gap-1">
-          <span className={`${currentSize.text} font-bold text-white`}>
-            Dev
-          </span>
-          <span className={`${currentSize.text} font-bold text-[#7CDA3D]`}>
-            KMF
-          </span>
+          <span className={`${currentSize.text} font-bold ${theme === 'light' ? 'text-[#030303]' : 'text-white'}`}>Dev</span>
+          <span className={`${currentSize.text} font-bold text-[#7CDA3D]`}>KMF</span>
         </div>
         <span className="text-xs text-gray-400 font-medium tracking-wider">
-          FULL STACK
+          Full Stack Developer
         </span>
       </div>
     </div>

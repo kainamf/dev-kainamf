@@ -14,7 +14,7 @@ interface NavigationProps {
 const Navigation: React.FC<NavigationProps> = ({ menuItems, activeSection, scrollToSection, mobileMenuOpen, setMobileMenuOpen, themeClasses }) => (
   <nav className="fixed top-6 left-6 z-40">
     <div className="flex items-center gap-4">
-      <Logo size="sm" />
+  <Logo size="sm" theme={themeClasses.text === 'text-gray-900' ? 'light' : 'dark'} />
       {/* Desktop Menu */}
       <div className="hidden md:flex items-center gap-2 bg-black/20 backdrop-blur-md rounded-full p-2 border border-white/10">
         {menuItems.map((item) => (

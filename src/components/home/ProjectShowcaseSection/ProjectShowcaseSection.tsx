@@ -81,14 +81,14 @@ const ProjectShowcaseSection: React.FC<ProjectShowcaseSectionProps> = ({ theme, 
         </p>
       </div>
 
-      <div className="grid lg:grid-cols-2 gap-8 items-center">
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8 items-center">
         {/* Project Cards */}
-        <div className="space-y-4">
+  <div className="space-y-4">
           {projects.map((project, index) => (
             <div
               key={project.id}
               className={`
-                p-6 rounded-2xl cursor-pointer transition-all duration-500 border-2
+                p-4 sm:p-6 rounded-2xl cursor-pointer transition-all duration-500 border-2
                 ${activeProject === index
                   ? 'bg-[#212328] border-[#7CDA3D] shadow-2xl shadow-[#7CDA3D]/20 scale-105'
                   : 'bg-[#212328]/50 border-transparent hover:border-[#7CDA3D]/50 hover:bg-[#212328]'
@@ -96,9 +96,9 @@ const ProjectShowcaseSection: React.FC<ProjectShowcaseSectionProps> = ({ theme, 
               `}
               onClick={() => handleProjectClick(index)}
             >
-              <div className="flex items-start gap-4">
+              <div className="flex flex-col xs:flex-row items-start gap-2 xs:gap-4">
                 <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+                  className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center flex-shrink-0 mb-2 xs:mb-0"
                   style={{ backgroundColor: project.color }}
                 >
                   {project.category === 'Mobile' ? (
@@ -110,35 +110,35 @@ const ProjectShowcaseSection: React.FC<ProjectShowcaseSectionProps> = ({ theme, 
                   )}
                 </div>
 
-                <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-2">
-                    <h3 className="text-white font-bold text-lg">{project.title}</h3>
+                <div className="flex-1 min-w-0">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 mb-2 w-full">
+                    <h3 className="text-white font-bold text-base sm:text-lg truncate">{project.title}</h3>
                     <span
-                      className="px-2 py-1 rounded-full text-xs font-medium text-white"
+                      className="px-2 py-1 rounded-full text-xs font-medium text-white w-fit"
                       style={{ backgroundColor: project.color }}
                     >
                       {project.category}
                     </span>
                   </div>
 
-                  <p className="text-gray-400 mb-3">{project.description}</p>
+                  <p className="text-gray-400 mb-3 text-sm sm:text-base break-words">{project.description}</p>
 
-                  <div className="flex flex-wrap gap-2 mb-3">
+                  <div className="flex flex-wrap gap-1 sm:gap-2 mb-2 sm:mb-3">
                     {project.tech.map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className="px-2 py-1 bg-[#030303] text-[#7CDA3D] text-xs rounded-lg font-medium"
+                        className="px-2 py-1 bg-[#030303] text-[#7CDA3D] text-[10px] sm:text-xs rounded-lg font-medium"
                       >
                         {tech}
                       </span>
                     ))}
                   </div>
 
-                  <div className="flex items-center gap-4">
+                  <div className="flex flex-wrap items-center gap-2 sm:gap-4">
                     {project.features.map((feature, featureIndex) => (
                       <div key={featureIndex} className="flex items-center gap-1">
                         <Star size={12} className="text-[#7CDA3D]" />
-                        <span className="text-gray-400 text-xs">{feature}</span>
+                        <span className="text-gray-400 text-[10px] sm:text-xs">{feature}</span>
                       </div>
                     ))}
                   </div>
@@ -192,23 +192,20 @@ const ProjectShowcaseSection: React.FC<ProjectShowcaseSectionProps> = ({ theme, 
                 {projects[activeProject].description}
               </p>
 
-              <div className="flex items-center justify-between">
-                <div className="flex gap-2">
-                  {projects[activeProject].tech.slice(0, 3).map((tech, index) => (
-                    <span
-                      key={index}
-                      className="px-3 py-1 bg-[#030303] text-[#7CDA3D] text-sm rounded-lg font-medium"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                <button className="flex items-center gap-2 text-[#7CDA3D] hover:text-white transition-colors font-medium">
-                  Ver Detalhes
-                  <ExternalLink size={16} />
-                </button>
+              <div className="flex flex-wrap gap-2 mb-4">
+                {projects[activeProject].tech.slice(0, 3).map((tech, index) => (
+                  <span
+                    key={index}
+                    className="px-3 py-1 bg-[#030303] text-[#7CDA3D] text-sm rounded-lg font-medium"
+                  >
+                    {tech}
+                  </span>
+                ))}
               </div>
+              <button className="flex items-center gap-2 text-[#7CDA3D] hover:text-white transition-colors font-medium">
+                Ver Detalhes
+                <ExternalLink size={16} />
+              </button>
             </div>
           </div>
         </div>

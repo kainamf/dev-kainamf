@@ -25,13 +25,12 @@ const HeroSection: React.FC<HeroSectionProps> = ({ theme, themeClasses, scrollY,
       >
         <Code2 size={48} className="text-[#030303] animate-pulse" />
       </div>
-  <h1 className={`text-6xl md:text-8xl font-bold ${themeClasses.text} mb-8 relative`}>
-        Desenvolvedor
-        <br />
-        <span className="text-[#7CDA3D] bg-gradient-to-r from-[#7CDA3D] to-[#7CDA3D]/70 bg-clip-text text-transparent animate-pulse">
-          Full Stack
-        </span>
-      </h1>
+  <h1 className={`text-4xl xs:text-5xl sm:text-6xl md:text-8xl font-bold ${themeClasses.text} mb-8 relative leading-tight break-words`}>
+    <span className="block">Desenvolvedor</span>
+    <span className="block text-[#7CDA3D] bg-gradient-to-r from-[#7CDA3D] to-[#7CDA3D]/70 bg-clip-text text-transparent animate-pulse">
+      Full Stack
+    </span>
+  </h1>
   <p className={`text-xl md:text-2xl ${theme === 'light' ? 'text-gray-600' : 'text-gray-300'} max-w-3xl mx-auto leading-relaxed mb-8 opacity-0 animate-fade-in-up`} style={{animationDelay: '1s', animationFillMode: 'forwards'}}>
         Criação de sites e landing pages modernas, responsivas e otimizadas para conversão
       </p>

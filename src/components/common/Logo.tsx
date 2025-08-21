@@ -80,7 +80,7 @@ const Logo: React.FC<LogoProps> = ({
           <span className={`${currentSize.text} font-bold ${theme === 'light' ? 'text-[#030303]' : 'text-white'}`}>Dev</span>
           <span className={`${currentSize.text} font-bold text-[#7CDA3D]`}>KMF</span>
         </div>
-        <span className="text-xs text-gray-400 font-medium tracking-wider">
+        <span className={`text-xs font-medium tracking-wider ${theme === 'light' ? 'text-[#222]' : 'text-gray-400'}`}> 
           Full Stack Developer
         </span>
       </div>

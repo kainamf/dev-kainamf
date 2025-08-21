@@ -53,6 +53,36 @@ function App() {
     localStorage.setItem('theme', theme);
   }, [theme]);
 
+  // Scroll-based section detection
+  useEffect(() => {
+    const sectionIds = ['home', 'skills', 'services', 'projects-section', 'contact-section'];
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + window.innerHeight / 3;
+      let current = 'home';
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (el) {
+          const { top } = el.getBoundingClientRect();
+          if (top + window.scrollY - 80 <= scrollPosition) {
+            current = id;
+          }
+        }
+      }
+      // Map DOM ids to menu ids
+      const idMap: Record<string, string> = {
+        'home': 'home',
+        'skills': 'skills',
+        'services': 'services',
+        'projects-section': 'projects',
+        'contact-section': 'contact',
+      };
+      setActiveSection(idMap[current]);
+    };
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const getThemeClasses = () => {
     switch (theme) {
       case 'light':
@@ -146,14 +176,14 @@ function App() {
           <ServicesSection services={services} theme={theme} themeClasses={themeClasses} />
         </div>
         <div className="mb-8">
-          <section id="projects" className="min-h-screen flex items-center justify-center p-4">
+          <section id="projects-section" className="min-h-screen flex items-center justify-center p-4">
             <div className="w-full max-w-6xl">
               <ProjectShowcaseSection theme={theme} themeClasses={themeClasses} />
             </div>
           </section>
         </div>
-  <div className="mb-2">
-          <section id="contact" className="min-h-screen flex items-center justify-center p-4">
+        <div className="mb-2">
+          <section id="contact-section" className="min-h-screen flex items-center justify-center p-4">
             <div className="w-full max-w-4xl">
               <ContactSection />
             </div>

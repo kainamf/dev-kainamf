@@ -121,13 +121,13 @@ const ProjectShowcaseSection: React.FC<ProjectShowcaseSectionProps> = ({ theme, 
                     </span>
                   </div>
 
-                  <p className="text-gray-400 mb-3 text-sm sm:text-base break-words">{project.description}</p>
+                  <p className={`text-white mb-3 text-sm sm:text-base break-words`}>{project.description}</p>
 
                   <div className="flex flex-wrap gap-1 sm:gap-2 mb-2 sm:mb-3">
                     {project.tech.map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className="px-2 py-1 bg-[#030303] text-[#7CDA3D] text-[10px] sm:text-xs rounded-lg font-medium"
+                        className={`px-2 py-1 bg-[#030303] text-[10px] sm:text-xs rounded-lg font-medium text-white`}
                       >
                         {tech}
                       </span>
@@ -138,7 +138,7 @@ const ProjectShowcaseSection: React.FC<ProjectShowcaseSectionProps> = ({ theme, 
                     {project.features.map((feature, featureIndex) => (
                       <div key={featureIndex} className="flex items-center gap-1">
                         <Star size={12} className="text-[#7CDA3D]" />
-                        <span className="text-gray-400 text-[10px] sm:text-xs">{feature}</span>
+                        <span className="text-white text-[10px] sm:text-xs">{feature}</span>
                       </div>
                     ))}
                   </div>

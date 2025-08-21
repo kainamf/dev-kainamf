@@ -1,13 +1,11 @@
 import React from 'react';
-// import Logo from '../../common/Logo';
-// import { Github, Instagram } from 'lucide-react';
 
 interface FooterSectionProps {
   theme: 'dark' | 'light';
   themeClasses: { card: string };
 }
 
-const FooterSection: React.FC<FooterSectionProps> = ({ theme, themeClasses }) => (
+const FooterSection: React.FC<FooterSectionProps> = ({ theme }) => (
   <footer className="py-2 px-4">
     <div className="max-w-6xl mx-auto">
   {/* Contatos removidos do footer */}

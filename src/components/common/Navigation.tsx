@@ -27,7 +27,7 @@ const Navigation: React.FC<NavigationProps> = ({ menuItems, activeSection, scrol
             px-4 py-2 rounded-full transition-all duration-300 text-sm font-medium
             ${activeSection === item.id 
               ? 'bg-[#7CDA3D] text-black' 
-              : `${themeClasses.text} hover:bg-white/10`
+              : `${themeClasses.text === 'text-gray-900' ? 'text-white' : themeClasses.text} hover:bg-white/10` 
             }
           `}
         >

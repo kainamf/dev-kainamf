@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Send, CheckCircle, AlertCircle, User, Mail, MessageSquare } from 'lucide-react';
+import { Send, CheckCircle, AlertCircle, User, Mail, MessageSquare, Github, Instagram, Linkedin } from 'lucide-react';
 import { sendContactEmail } from '../../../services/emailService';
 
 const ContactSection: React.FC = () => {
@@ -35,7 +35,7 @@ const ContactSection: React.FC = () => {
   };
 
   return (
-  <div className="bg-[#212328] rounded-3xl p-8 border border-[#7CDA3D]/20 relative overflow-hidden">
+    <div className="bg-[#212328] rounded-3xl p-8 border border-[#7CDA3D]/20 relative overflow-hidden">
       {/* Background Animation */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-0 left-0 w-32 h-32 bg-[#7CDA3D] rounded-full animate-pulse"></div>
@@ -51,14 +51,13 @@ const ContactSection: React.FC = () => {
             Conte-me sua ideia e vamos transformá-la em realidade
           </p>
         </div>
-
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Nome */}
           <div className="relative">
             <div className={`
               flex items-center gap-3 p-4 rounded-xl border-2 transition-all duration-300
-              ${focusedField === 'name' 
-                ? 'border-[#7CDA3D] bg-[#7CDA3D]/5' 
+              ${focusedField === 'name'
+                ? 'border-[#7CDA3D] bg-[#7CDA3D]/5'
                 : 'border-gray-600 bg-[#030303]/50'
               }
             `}>
@@ -81,8 +80,8 @@ const ContactSection: React.FC = () => {
           <div className="relative">
             <div className={`
               flex items-center gap-3 p-4 rounded-xl border-2 transition-all duration-300
-              ${focusedField === 'email' 
-                ? 'border-[#7CDA3D] bg-[#7CDA3D]/5' 
+              ${focusedField === 'email'
+                ? 'border-[#7CDA3D] bg-[#7CDA3D]/5'
                 : 'border-gray-600 bg-[#030303]/50'
               }
             `}>
@@ -105,8 +104,8 @@ const ContactSection: React.FC = () => {
           <div className="relative">
             <div className={`
               flex items-start gap-3 p-4 rounded-xl border-2 transition-all duration-300
-              ${focusedField === 'message' 
-                ? 'border-[#7CDA3D] bg-[#7CDA3D]/5' 
+              ${focusedField === 'message'
+                ? 'border-[#7CDA3D] bg-[#7CDA3D]/5'
                 : 'border-gray-600 bg-[#030303]/50'
               }
             `}>
@@ -131,11 +130,11 @@ const ContactSection: React.FC = () => {
             disabled={status === 'sending'}
             className={`
               w-full p-4 rounded-xl font-bold text-lg transition-all duration-300 flex items-center justify-center gap-3 relative overflow-hidden
-              ${status === 'success' 
-                ? 'bg-green-500 text-white' 
+              ${status === 'success'
+                ? 'bg-green-500 text-white'
                 : status === 'error'
-                ? 'bg-red-500 text-white'
-                : 'bg-[#7CDA3D] text-[#030303] hover:bg-[#7CDA3D]/90 hover:scale-105 hover:shadow-2xl hover:shadow-[#7CDA3D]/30'
+                  ? 'bg-red-500 text-white'
+                  : 'bg-[#7CDA3D] text-[#030303] hover:bg-[#7CDA3D]/90 hover:scale-105 hover:shadow-2xl hover:shadow-[#7CDA3D]/30'
               }
               ${status === 'sending' ? 'animate-pulse' : ''}
             `}
@@ -146,7 +145,7 @@ const ContactSection: React.FC = () => {
             {status === 'success' && <CheckCircle size={20} />}
             {status === 'error' && <AlertCircle size={20} />}
             {status === 'idle' && <Send size={20} />}
-            
+
             <span>
               {status === 'sending' && 'Enviando...'}
               {status === 'success' && 'Mensagem Enviada!'}
@@ -167,6 +166,39 @@ const ContactSection: React.FC = () => {
             Obrigado! Entrarei em contato em breve 🚀
           </div>
         )}
+
+        {/* Bloco de contatos no final */}
+        <div className="flex flex-col items-center gap-2 mt-6">
+          <div className="flex gap-3 justify-center">
+            <a
+              href="https://github.com/kainamf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-full bg-white/10 hover:bg-[#7CDA3D] hover:text-[#030303] text-white transition-colors"
+              title="GitHub"
+            >
+              <Github size={22} />
+            </a>
+            <a
+              href="https://www.instagram.com/dev.kmf/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-full bg-white/10 hover:bg-[#7CDA3D] hover:text-[#030303] text-white transition-colors"
+              title="Instagram"
+            >
+              <Instagram size={22} />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/kainafreitas"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-full bg-white/10 hover:bg-[#7CDA3D] hover:text-[#030303] text-white transition-colors"
+              title="LinkedIn"
+            >
+              <Linkedin size={22} />
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   );

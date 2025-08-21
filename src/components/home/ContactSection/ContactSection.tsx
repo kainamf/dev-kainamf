@@ -36,11 +36,7 @@ const ContactSection: React.FC = () => {
 
   return (
     <div className="bg-[#212328] rounded-3xl p-8 border border-[#7CDA3D]/20 relative overflow-hidden">
-      {/* Background Animation */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-0 left-0 w-32 h-32 bg-[#7CDA3D] rounded-full animate-pulse"></div>
-        <div className="absolute bottom-0 right-0 w-24 h-24 bg-[#7CDA3D] rounded-full animate-bounce"></div>
-      </div>
+  {/* Background Animation removido */}
 
       <div className="relative z-10">
         <div className="text-center mb-8">

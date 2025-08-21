@@ -155,28 +155,47 @@ const InteractiveBackground: React.FC<InteractiveBackgroundProps> = ({ theme }) 
     initParticles();
     if (isMobile) {
       drawParticles(); // Só desenha uma vez
+      window.addEventListener('resize', () => {
+        resizeCanvas();
+        drawParticles();
+      });
+      // Cleanup
+      return () => {
+        window.removeEventListener('resize', () => {
+          resizeCanvas();
+          drawParticles();
+        });
+      };
     } else {
       const animate = () => {
         drawParticles();
         requestAnimationFrame(animate);
       };
       animate();
+      window.addEventListener('resize', resizeCanvas);
+      window.addEventListener('mousemove', handleMouseMove);
+      // Cleanup
+      return () => {
+        window.removeEventListener('resize', resizeCanvas);
+        window.removeEventListener('mousemove', handleMouseMove);
+      };
     }
-
-    window.addEventListener('resize', resizeCanvas);
-    if (!isMobile) window.addEventListener('mousemove', handleMouseMove);
-
-    return () => {
-      window.removeEventListener('resize', resizeCanvas);
-      if (!isMobile) window.removeEventListener('mousemove', handleMouseMove);
-    };
   }, [theme]);
 
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-0"
-      style={{ opacity: 0.7, transition: 'opacity 0.3s' }}
+      className="fixed top-0 left-0 w-screen h-screen pointer-events-none z-0"
+      style={{
+        opacity: 0.7,
+        transition: 'opacity 0.3s',
+        width: '100vw',
+        height: '100vh',
+        minWidth: '100vw',
+        minHeight: '100vh',
+        maxWidth: '100vw',
+        maxHeight: '100vh',
+      }}
     />
   );
 };

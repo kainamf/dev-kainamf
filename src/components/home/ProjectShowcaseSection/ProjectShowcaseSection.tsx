@@ -97,7 +97,7 @@ const ProjectShowcaseSection: React.FC<ProjectShowcaseSectionProps> = ({ theme, 
               <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/40 to-transparent rounded-xl" />
             </div>
             <h3 className="text-white font-bold text-lg mb-1 truncate">{project.title}</h3>
-            <p className="text-white mb-3 text-sm sm:text-base break-words">{project.description}</p>
+            <p className="text-white mb-3 text-sm sm:text-base break-words md:min-h-[96px] flex items-center">{project.description}</p>
             <div className="flex flex-wrap gap-1 sm:gap-2 mb-2 sm:mb-3">
               {project.tech.map((tech, techIndex) => (
                 <span

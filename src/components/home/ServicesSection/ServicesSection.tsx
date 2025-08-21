@@ -40,14 +40,14 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ services, theme, them
               <h3 className={`${theme === 'light' ? 'text-black' : themeClasses.text} font-bold text-xl mb-3 group-hover:text-[#7CDA3D] transition-colors duration-300 text-center`}>
                 {service.title}
               </h3>
-              <p className={`${theme === 'light' ? 'text-black' : 'text-gray-400'} mb-4 group-hover:text-gray-300 transition-colors duration-300`}>
+              <p className={`${theme === 'light' ? 'text-black' : 'text-gray-400'} mb-4 group-hover:text-gray-300 transition-colors duration-300 min-h-[48px] flex items-center`}> 
                 {service.description}
               </p>
               <ul className="space-y-2">
                 {service.features.map((feature, featureIndex) => (
                   <li 
                     key={featureIndex}
-                    className={`flex items-center gap-2 text-sm ${theme === 'light' ? 'text-black' : 'text-gray-500'} group-hover:text-gray-400 transition-colors duration-300`}
+                    className={`flex items-center gap-2 text-sm ${theme === 'light' ? 'text-black' : 'text-gray-400'} group-hover:text-gray-400 transition-colors duration-300`}
                     style={{
                       animation: `fade-in 0.3s ease-out ${featureIndex * 0.1}s both`
                     }}

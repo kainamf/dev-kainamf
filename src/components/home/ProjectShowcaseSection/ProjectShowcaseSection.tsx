@@ -81,9 +81,9 @@ const ProjectShowcaseSection: React.FC<ProjectShowcaseSectionProps> = ({ theme, 
         </p>
       </div>
 
-  <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8 items-center">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8 items-center">
         {/* Project Cards */}
-  <div className="space-y-4">
+        <div className="space-y-4">
           {projects.map((project, index) => (
             <div
               key={project.id}
@@ -202,10 +202,6 @@ const ProjectShowcaseSection: React.FC<ProjectShowcaseSectionProps> = ({ theme, 
                   </span>
                 ))}
               </div>
-              <button className="flex items-center gap-2 text-[#7CDA3D] hover:text-white transition-colors font-medium">
-                Ver Detalhes
-                <ExternalLink size={16} />
-              </button>
             </div>
           </div>
         </div>

@@ -183,7 +183,7 @@ function App() {
           </section>
         </div>
         <div className="mb-2">
-          <section id="contact-section" className="min-h-screen flex items-center justify-center p-4">
+          <section id="contact-section" className="flex items-center justify-center p-4">
             <div className="w-full max-w-4xl">
               <ContactSection />
             </div>

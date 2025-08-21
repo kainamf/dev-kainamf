@@ -13,7 +13,7 @@ const SkillsOrb: React.FC = () => {
     { icon: Zap, name: 'Performance', color: '#FFA726', description: 'Otimização, SEO' },
     { icon: Layers, name: 'DevOps', color: '#AB47BC', description: 'Docker, CI/CD' },
     { icon: Cpu, name: 'APIs', color: '#EF5350', description: 'REST, GraphQL' },
-    { icon: Cloud, name: 'Cloud', color: '#66BB6A', description: 'AWS, Vercel, Netlify' }
+    { icon: Cloud, name: 'Cloud', color: '#2196F3', description: 'AWS, Vercel, Netlify' }
   ];
 
   useEffect(() => {
@@ -26,12 +26,12 @@ const SkillsOrb: React.FC = () => {
   }, [isHovered, skills.length]);
 
   return (
-    <div 
+    <div
       className="relative w-80 h-80 mx-auto mb-12"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-  {/* Central Hub removido */}
+      {/* Central Hub removido */}
 
       {/* Skill Orbs */}
       {skills.map((skill, index) => {
@@ -59,12 +59,12 @@ const SkillsOrb: React.FC = () => {
             onClick={() => setActiveSkill(index)}
             onMouseEnter={() => setActiveSkill(index)}
           >
-            <skill.icon 
-              size={24} 
-              className={`text-white transition-transform duration-300 ${isActive ? 'animate-bounce' : 'group-hover:scale-110'}`} 
+            <skill.icon
+              size={24}
+              className={`text-white transition-transform duration-300 ${isActive ? 'animate-bounce' : 'group-hover:scale-110'}`}
             />
             {/* Connection Line */}
-            <div 
+            <div
               className={`absolute w-px bg-gradient-to-r from-transparent via-white/30 to-transparent transition-opacity duration-500 ${isActive ? 'opacity-100' : 'opacity-20'}`}
               style={{
                 height: `${radius - 40}px`,
@@ -89,13 +89,13 @@ const SkillsOrb: React.FC = () => {
             className="pointer-events-none z-50 absolute"
             style={{
               left: `calc(50% + ${x}px)`,
-              top: `calc(50% + ${y + 48}px)`, // 48px = orb radius + spacing
+              top: `calc(50% + ${y + 48}px)`,
               transform: 'translate(-50%, 0)'
             }}
           >
-            <div className="bg-black/90 text-white text-xs px-3 py-2 rounded-lg whitespace-nowrap shadow-lg">
-              <div className="font-bold">{skills[activeSkill].name}</div>
-              <div className="text-gray-300">{skills[activeSkill].description}</div>
+            <div className="bg-gray-800 text-white text-xs px-3 py-2 rounded-lg whitespace-nowrap shadow-lg border border-[1px] border-[#388e3c]">
+              <div className="font-bold text-white">{skills[activeSkill].name}</div>
+              <div className="text-white">{skills[activeSkill].description}</div>
             </div>
           </div>
         );

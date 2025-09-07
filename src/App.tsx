@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Globe, Layers, Zap } from 'lucide-react';
 import Header from './components/common/Header';
 import InteractiveBackground from './components/common/InteractiveBackground';
@@ -10,6 +11,7 @@ import FooterSection from './components/home/FooterSection/FooterSection';
 import ContactSection from './components/home/ContactSection/ContactSection';
 
 function App() {
+  const location = useLocation();
   const [theme, setTheme] = useState<'dark' | 'light'>(() => {
     const stored = localStorage.getItem('theme');
     return stored === 'light' || stored === 'dark' ? stored : 'dark';
@@ -75,6 +77,18 @@ function App() {
     handleScroll(); // Initial check
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Detecta navegação vinda de outra página e faz scroll para a seção
+  useEffect(() => {
+    if (location.state && location.state.scrollTo) {
+      const el = document.getElementById(location.state.scrollTo);
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    }
+  }, [location]);
 
   const getThemeClasses = () => {
     switch (theme) {

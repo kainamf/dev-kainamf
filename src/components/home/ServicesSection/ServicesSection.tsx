@@ -1,5 +1,6 @@
 import React from 'react';
 import { Star } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface Service {
   icon: React.ElementType;
@@ -60,6 +61,14 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ services, theme, them
             </div>
           </div>
         ))}
+      </div>
+      <div className="mt-10 text-center">
+        <Link
+          to="/services"
+          className="inline-block bg-[#7CDA3D] text-white font-semibold px-6 py-3 rounded-full shadow hover:bg-[#6bb82f] transition-colors duration-300"
+        >
+          Saiba mais sobre os serviços
+        </Link>
       </div>
     </div>
   </section>

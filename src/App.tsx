@@ -141,7 +141,15 @@ function App() {
   ];
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
+    // Mapeia os ids do menu para os ids reais das seções
+    const idMap: Record<string, string> = {
+      home: 'home',
+      skills: 'skills',
+      services: 'services',
+      projects: 'projects-section',
+      contact: 'contact-section',
+    };
+    const element = document.getElementById(idMap[sectionId] || sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
       setActiveSection(sectionId);

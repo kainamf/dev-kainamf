@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Logo from './Logo';
+import Header from './Header';
 import { Copy, Check, ArrowLeft } from 'lucide-react';
 
 interface LogoShowcaseProps {
@@ -34,9 +35,35 @@ const LogoShowcase: React.FC<LogoShowcaseProps> = ({ onBack }) => {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  // Configuração fixa para barra superior
+  const theme = 'dark';
+  const themeClasses = {
+    bg: 'bg-[#030303]',
+    text: 'text-white',
+    card: 'bg-[#212328]',
+    accent: 'text-[#7CDA3D]'
+  };
+  const menuItems = [
+    { id: 'home', label: 'Início' },
+    { id: 'skills', label: 'Skills' },
+    { id: 'services', label: 'Serviços' },
+    { id: 'projects', label: 'Projetos' },
+    { id: 'contact', label: 'Contato' }
+  ];
   return (
-    <div className="min-h-screen bg-[#030303] p-8">
-      <div className="max-w-6xl mx-auto">
+    <div className="min-h-screen bg-[#030303]">
+      <Header
+        theme={theme}
+        onThemeChange={() => {}}
+        menuItems={menuItems}
+        activeSection={"logo"}
+        scrollToSection={() => {}}
+        mobileMenuOpen={false}
+        setMobileMenuOpen={() => {}}
+        themeClasses={themeClasses}
+      />
+      <div className="h-20" />
+      <div className="max-w-6xl mx-auto p-8">
         {/* Header */}
         <div className="text-center mb-16">
           {onBack && (

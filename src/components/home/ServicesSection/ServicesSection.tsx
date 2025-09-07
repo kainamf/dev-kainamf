@@ -25,14 +25,7 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ services, theme, them
         <p className={`text-xl ${theme === 'light' ? 'text-gray-600' : 'text-gray-300'} max-w-2xl mx-auto`}>
           Soluções completas para sua presença digital
         </p>
-        <div className="mt-6">
-          <Link
-            to="/services"
-            className="inline-block bg-[#7CDA3D] text-white font-semibold px-6 py-3 rounded-full shadow hover:bg-[#6bb82f] transition-colors duration-300"
-          >
-            Saiba mais sobre os serviços
-          </Link>
-        </div>
+  {/* ...botão removido daqui... */}
       </div>
       <div className="grid md:grid-cols-3 gap-8">
         {services.map((service, index) => (
@@ -69,6 +62,14 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ services, theme, them
             </div>
           </div>
         ))}
+      </div>
+      <div className="mt-10 text-center">
+        <Link
+          to="/services"
+          className="inline-block bg-[#7CDA3D] text-white font-semibold px-6 py-3 rounded-full shadow hover:bg-[#6bb82f] transition-colors duration-300"
+        >
+          Saiba mais sobre os serviços
+        </Link>
       </div>
     </div>
   </section>

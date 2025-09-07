@@ -160,7 +160,7 @@ function App() {
 
   return (
     <div className={`min-h-screen ${themeClasses.bg} relative overflow-hidden transition-all duration-500`}>
-      <InteractiveBackground theme={theme} />
+  <InteractiveBackground theme={theme} />
       <Header
         theme={theme}
         onThemeChange={setTheme}

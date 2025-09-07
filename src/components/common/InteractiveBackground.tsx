@@ -31,6 +31,9 @@ const InteractiveBackground: React.FC<InteractiveBackgroundProps> = ({ theme }) 
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
+    // Detecta mobile
+    const isMobile = window.matchMedia('(max-width: 768px)').matches || /Mobi|Android/i.test(navigator.userAgent);
+
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
@@ -77,47 +80,49 @@ const InteractiveBackground: React.FC<InteractiveBackgroundProps> = ({ theme }) 
       });
     };
 
-    const animate = () => {
+    const drawParticles = () => {
       const colors = getThemeColors();
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.fillStyle = colors.bg;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Update and draw particles
       particlesRef.current.forEach((particle, index) => {
-        // Update position
-        particle.x += particle.vx;
-        particle.y += particle.vy;
-        particle.angle += particle.rotationSpeed;
+        // Apenas desenha, não atualiza posição/rotação se mobile
+        if (!isMobile) {
+          // Update position
+          particle.x += particle.vx;
+          particle.y += particle.vy;
+          particle.angle += particle.rotationSpeed;
 
-        // Bounce off edges
-        if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
-        if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
+          // Bounce off edges
+          if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
+          if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
 
-        // Mouse interaction: atração e rotação
-        const dx = mouseRef.current.x - particle.x;
-        const dy = mouseRef.current.y - particle.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-        if (distance < 120) {
-          const force = (120 - distance) / 120;
-          particle.vx += dx * force * 0.0012;
-          particle.vy += dy * force * 0.0012;
-          particle.rotationSpeed += (Math.random() - 0.5) * 0.002;
+          // Mouse interaction: atração e rotação
+          const dx = mouseRef.current.x - particle.x;
+          const dy = mouseRef.current.y - particle.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          if (distance < 120) {
+            const force = (120 - distance) / 120;
+            particle.vx += dx * force * 0.0012;
+            particle.vy += dy * force * 0.0012;
+            particle.rotationSpeed += (Math.random() - 0.5) * 0.002;
+          }
         }
 
-  // Desenhar apenas os símbolos escolhidos
+        // Desenhar apenas os símbolos escolhidos
   ctx.save();
-  ctx.globalAlpha = particle.opacity;
-  ctx.translate(particle.x, particle.y);
-  ctx.rotate(particle.angle);
-  ctx.shadowColor = colors.shadow;
-  ctx.shadowBlur = 8;
-  ctx.font = `${particle.size * 2}px monospace`;
-  ctx.fillStyle = colors.symbol;
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  ctx.fillText(particle.symbol, 0, 0);
-  ctx.restore();
+  ctx.globalAlpha = particle.opacity * 0.5;
+        ctx.translate(particle.x, particle.y);
+        ctx.rotate(particle.angle);
+        ctx.shadowColor = colors.shadow;
+        ctx.shadowBlur = 8;
+        ctx.font = `${particle.size * 2}px monospace`;
+        ctx.fillStyle = colors.symbol;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(particle.symbol, 0, 0);
+        ctx.restore();
 
         // Draw connections
         particlesRef.current.slice(index + 1).forEach(otherParticle => {
@@ -140,8 +145,6 @@ const InteractiveBackground: React.FC<InteractiveBackgroundProps> = ({ theme }) 
           }
         });
       });
-
-      requestAnimationFrame(animate);
     };
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -150,22 +153,49 @@ const InteractiveBackground: React.FC<InteractiveBackgroundProps> = ({ theme }) 
 
     resizeCanvas();
     initParticles();
-    animate();
-
-    window.addEventListener('resize', resizeCanvas);
-    window.addEventListener('mousemove', handleMouseMove);
-
-    return () => {
-      window.removeEventListener('resize', resizeCanvas);
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
+    if (isMobile) {
+      drawParticles(); // Só desenha uma vez
+      window.addEventListener('resize', () => {
+        resizeCanvas();
+        drawParticles();
+      });
+      // Cleanup
+      return () => {
+        window.removeEventListener('resize', () => {
+          resizeCanvas();
+          drawParticles();
+        });
+      };
+    } else {
+      const animate = () => {
+        drawParticles();
+        requestAnimationFrame(animate);
+      };
+      animate();
+      window.addEventListener('resize', resizeCanvas);
+      window.addEventListener('mousemove', handleMouseMove);
+      // Cleanup
+      return () => {
+        window.removeEventListener('resize', resizeCanvas);
+        window.removeEventListener('mousemove', handleMouseMove);
+      };
+    }
   }, [theme]);
 
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-0"
-      style={{ opacity: 0.7, transition: 'opacity 0.3s' }}
+      className="fixed top-0 left-0 w-screen h-screen pointer-events-none z-0"
+      style={{
+        opacity: 0.7,
+        transition: 'opacity 0.3s',
+        width: '100vw',
+        height: '100vh',
+        minWidth: '100vw',
+        minHeight: '100vh',
+        maxWidth: '100vw',
+        maxHeight: '100vh',
+      }}
     />
   );
 };

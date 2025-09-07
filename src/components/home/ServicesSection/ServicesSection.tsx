@@ -25,7 +25,6 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ services, theme, them
         <p className={`text-xl ${theme === 'light' ? 'text-gray-600' : 'text-gray-300'} max-w-2xl mx-auto`}>
           Soluções completas para sua presença digital
         </p>
-  {/* ...botão removido daqui... */}
       </div>
       <div className="grid md:grid-cols-3 gap-8">
         {services.map((service, index) => (

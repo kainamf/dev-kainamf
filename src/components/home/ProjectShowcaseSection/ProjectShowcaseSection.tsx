@@ -61,18 +61,34 @@ const ProjectShowcaseSection: React.FC<ProjectShowcaseSectionProps> = ({ theme, 
         </p>
       </div>
 
-  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8 items-start">
+  <div className="flex flex-col gap-8 items-center">
         {projects.map((project) => (
           <div
             key={project.id}
-            className="p-4 sm:p-6 rounded-2xl bg-[#212328]/80 border-2 border-transparent hover:border-[#7CDA3D]/50 transition-all duration-500 shadow-lg flex flex-col h-full"
+            className="p-4 sm:p-6 rounded-2xl bg-[#212328]/80 border-2 border-transparent hover:border-[#7CDA3D]/50 transition-all duration-500 shadow-lg flex flex-col h-full w-full max-w-6xl min-h-[700px] items-center text-center"
           >
-            <div className="w-full aspect-[16/9] mb-4 rounded-xl overflow-hidden bg-[#18191c] relative flex items-center justify-center">
-              <img
-                src={project.image}
-                alt={project.title}
+            <div className="w-full aspect-[16/9] mb-4 rounded-xl overflow-hidden bg-[#18191c] relative flex items-center justify-center overflow-x-hidden">
+              <iframe
+                src={project.deploy}
+                title={project.title}
                 className="object-cover w-full h-full"
                 loading="lazy"
+                sandbox="allow-scripts allow-same-origin allow-popups"
+                frameBorder={0}
+                allowFullScreen
+                style={{ maxWidth: '100vw', height: '100%' }}
+                onError={(e) => {
+                  // Fallback para imagem caso o iframe não carregue
+                  const target = e.target as HTMLIFrameElement;
+                  if (target && target.parentElement) {
+                    const img = document.createElement('img');
+                    img.src = project.image;
+                    img.alt = project.title;
+                    img.className = 'object-cover w-full h-full';
+                    img.loading = 'lazy';
+                    target.parentElement.replaceChild(img, target);
+                  }
+                }}
               />
               <div className="absolute bottom-2 right-2 flex gap-2 z-10">
                 <a
@@ -96,9 +112,9 @@ const ProjectShowcaseSection: React.FC<ProjectShowcaseSectionProps> = ({ theme, 
               </div>
               <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/40 to-transparent rounded-xl" />
             </div>
-            <h3 className="text-white font-bold text-lg mb-1 truncate">{project.title}</h3>
-            <p className="text-white mb-3 text-sm sm:text-base break-words md:min-h-[96px] flex items-center">{project.description}</p>
-            <div className="flex flex-wrap gap-1 sm:gap-2 mb-2 sm:mb-3">
+            <h3 className="text-white font-bold text-lg mb-1 truncate text-center">{project.title}</h3>
+            <p className="text-white mb-3 text-sm sm:text-base break-words md:min-h-[96px] flex items-center justify-center text-center">{project.description}</p>
+            <div className="flex flex-wrap gap-1 sm:gap-2 mb-2 sm:mb-3 justify-center text-center">
               {project.tech.map((tech, techIndex) => (
                 <span
                   key={techIndex}
@@ -110,7 +126,7 @@ const ProjectShowcaseSection: React.FC<ProjectShowcaseSectionProps> = ({ theme, 
             </div>
             <div className="flex flex-wrap items-center gap-2 sm:gap-4 mb-2">
               {project.features.map((feature, featureIndex) => (
-                <div key={featureIndex} className="flex items-center gap-1">
+                <div key={featureIndex} className="flex items-center gap-1 justify-center text-center">
                   <Star size={12} className="text-[#7CDA3D]" />
                   <span className="text-white text-[10px] sm:text-xs">{feature}</span>
                 </div>

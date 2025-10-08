@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Send, CheckCircle, AlertCircle, User, Mail, MessageSquare, Github, Instagram, Linkedin } from 'lucide-react';
+import { Send, CheckCircle, AlertCircle, User, Mail, MessageSquare, Github, Instagram, Linkedin, MessageCircle } from 'lucide-react';
 import { sendContactEmail } from '../../../services/emailService';
 
 const ContactSection: React.FC = () => {
@@ -192,6 +192,15 @@ const ContactSection: React.FC = () => {
               title="LinkedIn"
             >
               <Linkedin size={22} />
+            </a>
+            <a
+              href="https://wa.me/5521965724032"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-full bg-white/10 hover:bg-[#7CDA3D] hover:text-[#030303] text-white transition-colors"
+              title="WhatsApp"
+            >
+              <MessageCircle size={22} />
             </a>
           </div>
         </div>

@@ -7,6 +7,8 @@ import ProjectShowcaseSection from './components/home/ProjectShowcaseSection/Pro
 import HeroSection from './components/home/HeroSection/HeroSection';
 import SkillsSection from './components/home/SkillsSection/SkillsSection';
 import ServicesSection from './components/home/ServicesSection/ServicesSection';
+import ExperienceSection from './components/home/ExperienceSection/ExperienceSection';
+import EducationSection from './components/home/EducationSection/EducationSection';
 import FooterSection from './components/home/FooterSection/FooterSection';
 import ContactSection from './components/home/ContactSection/ContactSection';
 
@@ -50,7 +52,7 @@ function App() {
 
   // Scroll-based section detection
   useEffect(() => {
-    const sectionIds = ['home', 'skills', 'services', 'projects-section', 'contact-section'];
+    const sectionIds = ['home', 'experience', 'skills', 'education', 'projects-section', 'contact-section'];
     const handleScroll = () => {
       const scrollPosition = window.scrollY + window.innerHeight / 3;
       let current = 'home';
@@ -66,8 +68,9 @@ function App() {
       // Map DOM ids to menu ids
       const idMap: Record<string, string> = {
         'home': 'home',
+        'experience': 'experience',
         'skills': 'skills',
-        'services': 'services',
+        'education': 'education',
         'projects-section': 'projects',
         'contact-section': 'contact',
       };
@@ -134,8 +137,9 @@ function App() {
 
   const menuItems = [
     { id: 'home', label: 'Início' },
+    { id: 'experience', label: 'Experiência' },
     { id: 'skills', label: 'Skills' },
-    { id: 'services', label: 'Serviços' },
+    { id: 'education', label: 'Educação' },
     { id: 'projects', label: 'Projetos' },
     { id: 'contact', label: 'Contato' }
   ];
@@ -144,7 +148,9 @@ function App() {
     // Mapeia os ids do menu para os ids reais das seções
     const idMap: Record<string, string> = {
       home: 'home',
+      experience: 'experience',
       skills: 'skills',
+      education: 'education',
       services: 'services',
       projects: 'projects-section',
       contact: 'contact-section',
@@ -185,7 +191,13 @@ function App() {
           />
         </div>
         <div className="mb-8">
+          <ExperienceSection theme={theme} themeClasses={themeClasses} />
+        </div>
+        <div className="mb-8">
           <SkillsSection theme={theme} themeClasses={themeClasses} />
+        </div>
+        <div className="mb-8">
+          <EducationSection theme={theme} themeClasses={themeClasses} />
         </div>
         <div className="mb-8">
           <ServicesSection services={services} theme={theme} themeClasses={themeClasses} />

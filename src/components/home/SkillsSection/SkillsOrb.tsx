@@ -7,13 +7,13 @@ const SkillsOrb: React.FC = () => {
 
   const skills = [
     { icon: Code2, name: 'Frontend', color: '#7CDA3D', description: 'React, Next.js, TypeScript' },
-    { icon: Database, name: 'Backend', color: '#FF6B6B', description: 'Node.js, Express, MongoDB' },
-    { icon: Globe, name: 'Web Design', color: '#4ECDC4', description: 'UI/UX, Responsive Design' },
-    { icon: Smartphone, name: 'Mobile', color: '#45B7D1', description: 'React Native, PWA' },
-    { icon: Zap, name: 'Performance', color: '#FFA726', description: 'Otimização, SEO' },
-    { icon: Layers, name: 'DevOps', color: '#AB47BC', description: 'Docker, CI/CD' },
-    { icon: Cpu, name: 'APIs', color: '#EF5350', description: 'REST, GraphQL' },
-    { icon: Cloud, name: 'Cloud', color: '#2196F3', description: 'AWS, Vercel, Netlify' }
+    { icon: Database, name: 'Backend', color: '#FF6B6B', description: 'Node.js, Express, GraphQL' },
+    { icon: Cloud, name: 'AWS', color: '#FF9900', description: 'Lambda, S3, DynamoDB, API Gateway' },
+    { icon: Smartphone, name: 'Mobile', color: '#45B7D1', description: 'React Native' },
+    { icon: Zap, name: 'Serverless', color: '#FFA726', description: 'Serverless Framework' },
+    { icon: Layers, name: 'DevOps', color: '#AB47BC', description: 'Docker, CI/CD, GitHub Actions' },
+    { icon: Cpu, name: 'APIs', color: '#EF5350', description: 'REST, GraphQL, Microservices' },
+    { icon: Globe, name: 'Testing', color: '#4ECDC4', description: 'Jest, Cypress, Playwright' }
   ];
 
   useEffect(() => {

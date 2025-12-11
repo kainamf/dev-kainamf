@@ -1,4 +1,4 @@
-import { Code2, ArrowRight } from 'lucide-react';
+import { Code2, ArrowRight, Download } from 'lucide-react';
 import React, { useState } from 'react';
 
 interface HeroSectionProps {
@@ -79,17 +79,17 @@ const HeroSection: React.FC<HeroSectionProps> = ({ theme, themeClasses, scrollY,
           ))}
         </div>
         <h1 className={`text-4xl xs:text-5xl sm:text-6xl md:text-8xl font-bold ${themeClasses.text} mb-8 relative leading-tight break-words`}>
-          <span className="block">Desenvolvedor</span>
-          <span className="block text-[#7CDA3D] bg-gradient-to-r from-[#7CDA3D] to-[#7CDA3D]/70 bg-clip-text text-transparent animate-pulse">
-            Full Stack
+          <span className="block">Kainã Marques Freitas</span>
+          <span className="block text-[#7CDA3D] bg-gradient-to-r from-[#7CDA3D] to-[#7CDA3D]/70 bg-clip-text text-transparent animate-pulse text-5xl md:text-6xl mt-2">
+            Full Stack Developer
           </span>
         </h1>
         <p className={`text-xl md:text-2xl ${theme === 'light' ? 'text-gray-600' : 'text-gray-300'} max-w-3xl mx-auto leading-relaxed mb-8 opacity-0 animate-fade-in-up`} style={{animationDelay: '1s', animationFillMode: 'forwards'}}>
-          Criação de sites e landing pages modernas, responsivas e otimizadas para conversão
+          Especialista em TypeScript, React e Node.js com +2 anos de experiência construindo arquiteturas escaláveis, microserviços e aplicações serverless na AWS
         </p>
     
 
-        <div className="flex flex-col sm:flex-row gap-8 justify-center">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center flex-wrap">
           <button 
             onClick={() => scrollToSection('contact')}
             className="group/btn bg-[#7CDA3D] text-[#030303] px-10 py-4 rounded-2xl font-bold text-lg hover:bg-[#7CDA3D]/90 transition-all duration-300 flex items-center justify-center gap-3 hover:scale-105 hover:shadow-2xl hover:shadow-[#7CDA3D]/30 relative overflow-hidden"
@@ -105,6 +105,15 @@ const HeroSection: React.FC<HeroSectionProps> = ({ theme, themeClasses, scrollY,
             <span className="relative z-10">Ver Portfolio</span>
             <div className="absolute inset-0 bg-[#7CDA3D]/5 scale-x-0 group-hover/btn2:scale-x-100 transition-transform duration-300 origin-left" />
           </button>
+          <a 
+            href="/assets/docs/cv-kainafreitas-pt-br.pdf"
+            download="Curriculo-Kaina-Freitas.pdf"
+            className="border-2 border-[#7CDA3D] text-[#7CDA3D] px-10 py-4 rounded-2xl font-bold text-lg hover:bg-[#7CDA3D]/10 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#7CDA3D]/20 relative overflow-hidden group/btn3 flex items-center justify-center gap-3"
+          >
+            <span className="relative z-10">Baixar CV</span>
+            <Download size={20} className="group-hover/btn3:translate-y-1 transition-transform duration-300" />
+            <div className="absolute inset-0 bg-[#7CDA3D]/5 scale-x-0 group-hover/btn3:scale-x-100 transition-transform duration-300 origin-left" />
+          </a>
         </div>
       </div>
     </section>

@@ -11,10 +11,10 @@ const SkillsSection: React.FC<SkillsSectionProps> = ({ theme, themeClasses }) =>
     <div className="w-full max-w-6xl">
       <div className="text-center mb-8">
         <h2 className={`text-4xl md:text-5xl font-bold ${themeClasses.text} mb-8`}>
-          Minhas <span className="text-[#7CDA3D]">Especialidades</span>
+          Stack <span className="text-[#7CDA3D]">Tecnológico</span>
         </h2>
         <p className={`text-xl ${theme === 'light' ? 'text-gray-600' : 'text-gray-300'} max-w-2xl mx-auto mb-8`}>
-          Tecnologias e ferramentas que domino para criar soluções completas
+          TypeScript, JavaScript, Python, Java, Go e ferramentas modernas de desenvolvimento
         </p>
       </div>
       <div className="flex flex-col items-center gap-8">

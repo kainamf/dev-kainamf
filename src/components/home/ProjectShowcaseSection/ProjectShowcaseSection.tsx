@@ -12,11 +12,10 @@ const ProjectShowcaseSection: React.FC<ProjectShowcaseSectionProps> = ({ theme, 
     {
       id: 1,
       title: "Psi Lara Frasson",
-  description: "Site profissional para psicóloga Lara Frasson, com presença digital completa e institucional.",
+      description: "Site profissional para psicóloga Lara Frasson, com presença digital completa e institucional.",
       image: "/assets/images/psilarafrasson.png",
       tech: ["React", "TypeScript", "Tailwind CSS"],
       features: ["CTAs", "Whatsapp", "Instagram", "Google Drive", "Google Maps", "Responsivo", "Leads", "Performance"],
-  // category removido
       color: "#7CDA3D",
       github: "https://github.com/kainamf/psilarafrasson",
       deploy: "https://www.larafrassonpsicologainfantil.com/"
@@ -24,11 +23,10 @@ const ProjectShowcaseSection: React.FC<ProjectShowcaseSectionProps> = ({ theme, 
     {
       id: 2,
       title: "Tríade da Apresentação Pessoal",
-  description: "Site para o evento Tríade da Apresentação Pessoal, realizado no Vogue Square, com foco em divulgação e experiência do participante.",
+      description: "Site para o evento Tríade da Apresentação Pessoal, realizado no Vogue Square, com foco em divulgação e experiência do participante.",
       image: "/assets/images/triade.png",
       tech: ["React", "TypeScript", "Tailwind CSS"],
       features: ["UTicket", "Google Maps", "Whatsapp", "CTAs", "Material de divulgação", "Responsivo", "Evento"],
-  // category removido
       color: "#7CDA3D",
       github: "https://github.com/kainamf/triade-da-apresentacao-pessoal",
       deploy: "https://triade-da-apresentacao-pessoal.vercel.app/"
@@ -36,14 +34,24 @@ const ProjectShowcaseSection: React.FC<ProjectShowcaseSectionProps> = ({ theme, 
     {
       id: 3,
       title: "Psi Gabrielle Mazulo",
-  description: "Site profissional para psicóloga Gabrielle Mazulo, com identidade visual personalizada e institucional.",
+      description: "Site profissional para psicóloga Gabrielle Mazulo, com identidade visual personalizada e institucional.",
       image: "/assets/images/psigabrielle.png",
       tech: ["React", "TypeScript", "Tailwind CSS"],
       features: ["CTAs", "Whatsapp", "Instagram", "Google Maps", "Responsivo", "Performance"],
-  // category removido
       color: "#7CDA3D",
       github: "https://github.com/kainamf/psigabrielle",
       deploy: "https://psigabriellemazulo.vercel.app/"
+    },
+    {
+      id: 4,
+      title: "LeTable Curso de Etiqueta",
+      description: "Landing page para o curso de etiqueta LeTable, com informações, inscrição e divulgação institucional.",
+      image: "/assets/images/letable.png", // Adicione a imagem correspondente em assets/images se desejar
+      tech: ["React", "TypeScript", "Tailwind CSS"],
+      features: ["Landing page", "Inscrição", "Responsivo", "Divulgação"],
+      color: "#7CDA3D",
+      github: "https://github.com/kainamf/entre-loucas-e-gestos",
+      deploy: "https://letable-curso-de-etiqueta.vercel.app/"
     }
   ];
   // Removido: lógica de destaque automático e interação manual
@@ -64,7 +72,6 @@ const ProjectShowcaseSection: React.FC<ProjectShowcaseSectionProps> = ({ theme, 
   <div className="flex flex-col gap-8 items-center">
         {projects.map((project) => (
           <div
-            key={project.id}
             className="p-4 sm:p-6 rounded-2xl bg-[#212328]/80 border-2 border-transparent hover:border-[#7CDA3D]/50 transition-all duration-500 shadow-lg flex flex-col h-full w-full max-w-6xl min-h-[700px] items-center text-center"
           >
             <div className="w-full aspect-[16/9] mb-4 rounded-xl overflow-hidden bg-[#18191c] relative flex items-center justify-center overflow-x-hidden">

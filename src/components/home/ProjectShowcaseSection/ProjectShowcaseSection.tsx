@@ -74,70 +74,73 @@ const ProjectShowcaseSection: React.FC<ProjectShowcaseSectionProps> = ({ theme, 
           <div
             className="p-4 sm:p-6 rounded-2xl bg-[#212328]/80 border-2 border-transparent hover:border-[#7CDA3D]/50 transition-all duration-500 shadow-lg flex flex-col h-full w-full max-w-6xl min-h-[700px] items-center text-center"
           >
-            <div className="w-full aspect-[16/9] mb-4 rounded-xl overflow-hidden bg-[#18191c] relative flex items-center justify-center overflow-x-hidden">
-              <iframe
-                src={project.deploy}
-                title={project.title}
-                className="object-cover w-full h-full"
-                loading="lazy"
-                sandbox="allow-scripts allow-same-origin allow-popups"
-                frameBorder={0}
-                allowFullScreen
-                style={{ maxWidth: '100vw', height: '100%' }}
-                onError={(e) => {
-                  // Fallback para imagem caso o iframe não carregue
-                  const target = e.target as HTMLIFrameElement;
-                  if (target && target.parentElement) {
-                    const img = document.createElement('img');
-                    img.src = project.image;
-                    img.alt = project.title;
-                    img.className = 'object-cover w-full h-full';
-                    img.loading = 'lazy';
-                    target.parentElement.replaceChild(img, target);
-                  }
-                }}
-              />
-              <div className="absolute bottom-2 right-2 flex gap-2 z-10">
-                <a
-                  href={project.deploy}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-3 bg-[#7CDA3D] text-[#030303] rounded-full hover:scale-110 transition-transform duration-300 shadow-lg"
-                  title="Ver site ao vivo"
-                >
-                  <ExternalLink size={18} />
-                </a>
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-3 bg-white/20 backdrop-blur-sm text-white rounded-full hover:scale-110 transition-transform duration-300"
-                  title="Ver código no GitHub"
-                >
-                  <Github size={18} />
-                </a>
-              </div>
-              <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/40 to-transparent rounded-xl" />
-            </div>
-            <h3 className="text-white font-bold text-lg mb-1 truncate text-center">{project.title}</h3>
-            <p className="text-white mb-3 text-sm sm:text-base break-words md:min-h-[96px] flex items-center justify-center text-center">{project.description}</p>
-            <div className="flex flex-wrap gap-1 sm:gap-2 mb-2 sm:mb-3 justify-center text-center">
-              {project.tech.map((tech, techIndex) => (
-                <span
-                  key={techIndex}
-                  className="px-2 py-1 bg-[#030303] text-[10px] sm:text-xs rounded-lg font-medium text-white"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-            <div className="flex flex-wrap items-center gap-2 sm:gap-4 mb-2">
-              {project.features.map((feature, featureIndex) => (
-                <div key={featureIndex} className="flex items-center gap-1 justify-center text-center">
-                  <Star size={12} className="text-[#7CDA3D]" />
-                  <span className="text-white text-[10px] sm:text-xs">{feature}</span>
+            <div className="flex flex-col flex-grow w-full">
+              <div className="w-full flex flex-col flex-grow rounded-xl overflow-hidden bg-[#18191c] relative mb-4">
+                <iframe
+                  src={project.deploy}
+                  title={project.title}
+                  className="w-full h-full flex-grow"
+                  loading="lazy"
+                  sandbox="allow-scripts allow-same-origin allow-popups"
+                  frameBorder={0}
+                  allowFullScreen
+                  onError={(e) => {
+                    // Fallback para imagem caso o iframe não carregue
+                    const target = e.target as HTMLIFrameElement;
+                    if (target && target.parentElement) {
+                      const img = document.createElement('img');
+                      img.src = project.image;
+                      img.alt = project.title;
+                      img.className = 'w-full h-full flex-grow';
+                      img.loading = 'lazy';
+                      target.parentElement.replaceChild(img, target);
+                    }
+                  }}
+                />
+                <div className="absolute bottom-2 right-2 flex gap-2 z-10">
+                  <a
+                    href={project.deploy}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-3 bg-[#7CDA3D] text-[#030303] rounded-full hover:scale-110 transition-transform duration-300 shadow-lg"
+                    title="Ver site ao vivo"
+                  >
+                    <ExternalLink size={18} />
+                  </a>
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-3 bg-white/20 backdrop-blur-sm text-white rounded-full hover:scale-110 transition-transform duration-300"
+                    title="Ver código no GitHub"
+                  >
+                    <Github size={18} />
+                  </a>
                 </div>
-              ))}
+                <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/40 to-transparent rounded-xl" />
+              </div>
+              <div className="flex flex-col items-center justify-end w-full">
+                <h3 className="text-white font-bold text-lg mb-1 truncate text-center">{project.title}</h3>
+                <p className="text-white mb-3 text-sm sm:text-base break-words md:min-h-[96px] flex items-center justify-center text-center">{project.description}</p>
+                <div className="flex flex-wrap gap-1 sm:gap-2 mb-2 sm:mb-3 justify-center text-center">
+                  {project.tech.map((tech, techIndex) => (
+                    <span
+                      key={techIndex}
+                      className="px-2 py-1 bg-[#030303] text-[10px] sm:text-xs rounded-lg font-medium text-white"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+                <div className="flex flex-wrap items-center gap-2 sm:gap-4 mb-2">
+                  {project.features.map((feature, featureIndex) => (
+                    <div key={featureIndex} className="flex items-center gap-1 justify-center text-center">
+                      <Star size={12} className="text-[#7CDA3D]" />
+                      <span className="text-white text-[10px] sm:text-xs">{feature}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
             {/* Botões agora estão sobre a imagem */}
           </div>
